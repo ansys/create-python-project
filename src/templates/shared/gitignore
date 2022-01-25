@@ -1,0 +1,87 @@
+# Compiled source #
+###################
+*.pyc
+*.pyd
+*.c
+*.cpp
+*.so
+*.o
+*.cache
+
+# OS generated files #
+######################
+.docusaurus
+.cache-loader
+.fuse_hidden*
+*~
+*swp
+
+# emacs
+flycheck*
+
+# Old files #
+_old/
+
+# Pip generated folders #
+#########################
+
+# MISC
+_build/
+pyansys/Interface.py
+*.bat
+doc/source/examples/*
+*.out
+*.tar.gz
+*.mypy_cache
+
+# docs
+_autosummary
+doc/build_errors.txt
+
+
+# Testing
+factory/
+Testing/
+UnitTesting/
+TODO
+test.sh
+.pytest_cache/
+tests/.coverage
+tests/htmlcov
+tests/cyclic/htmlcov
+.coverage
+*,cover
+.benchmarks/
+test-output.xml
+
+\#*
+.\#*
+/.ipynb_checkpoints
+
+# test scripts
+*.cmd
+wheelhouse/
+
+# jupyterlab
+/node_modules
+yarn.lock
+jupyterlab/docker/*.tar.gz
+examples/.local
+.ipynb_checkpoints/
+
+# docker
+docker/mapdl/v211
+docker/mapdl/v212
+docker/mapdl/_old
+docker/mapdl/*.sh
+
+
+# temp testing
+tmp.out
+
+# virtual environment
+venv/
+
+# IDEs local settings
+.vscode/
+.idea/

@@ -1,0 +1,1 @@
+# Copyright (c) 2022, Ansys Inc. Unauthorised use, distribution or duplication is prohibited

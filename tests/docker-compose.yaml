@@ -1,0 +1,10 @@
+version: '3.9'
+services:
+  test-create-project:
+    build:
+      context: ../
+      dockerfile: ./tests/Dockerfile
+    volumes:
+      - ../:/pytest_project
+    stdin_open: true
+    tty: true

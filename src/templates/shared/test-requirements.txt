@@ -1,0 +1,7 @@
+coverage==6.2
+pytest==6.2.5
+pytest-cov==3.0.0
+pytest-flakes==4.0.5
+pytest-pep8
+pytest-pythonpath
+docker

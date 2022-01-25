@@ -8,9 +8,9 @@
 *.o
 *.cache
 __pycache__/
+dist/
 # OS generated files #
 ######################
-.docusaurus
 .cache-loader
 .fuse_hidden*
 *~

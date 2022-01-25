@@ -1,3 +1,0 @@
-[console_scripts]
-ansys-ace-project-gen = createaceproject.main:cli
-

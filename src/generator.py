@@ -1,6 +1,7 @@
 # Copyright (c) 2022 Ansys, Inc. and its affiliates. Unauthorised use, distribution or duplication is prohibited
 # LICENSE file is in the root directory of this source tree.
 import os
+import pathlib
 import subprocess
 import shutil
 import emoji
@@ -44,36 +45,36 @@ def hasPipx():
         return False
 
 
-def get_templates(templates_directory):
+def get_templates(templates_directory: pathlib.Path):
     templates = None
 
-    if not os.path.isdir(templates_directory):
+    if not templates_directory.is_dir():
         logger.error("Templates not found")
         raise Exception('templates directory not found')
     else:
-        templates = os.listdir(templates_directory)
-    return [x for x in templates if x != 'shared' and not x.startswith('.') and not x.startswith('README')]
+        templates = templates_directory.glob('*')
+    return [x for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
 
 
-def copy_template(templates_directory, template, destination):
+def copy_template(templates_directory: pathlib.Path, template: str, destination: pathlib.Path):
     # Copy shared resources
-    shared_directory = os.path.join(templates_directory, 'shared')
+    shared_directory = templates_directory / 'shared'
     shutil.copytree(shared_directory, destination, dirs_exist_ok=True)
 
     # Copy template resources
-    template_directory = os.path.join(templates_directory, template)
+    template_directory = templates_directory / template
     shutil.copytree(template_directory, destination, dirs_exist_ok=True)
 
 
-def generate_project_folder(root_directory, project_name=None, user_template=None):
-    templates_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates')
+def generate_project_folder(root_directory: pathlib.Path, project_name: str = None, user_template: str = None):
+    templates_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
     available_templates = get_templates(templates_dir)
 
     if not project_name:
         project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should we name your project ?")
 
-    destination_directory = os.path.join(root_directory, project_name)
-    if os.path.isdir(destination_directory):
+    destination_directory = root_directory / project_name
+    if destination_directory.is_dir():
         error = f"Directory already exists at path {destination_directory}"
         logger.error(error)
         raise IsADirectoryError(error)
@@ -87,9 +88,8 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
 
         for file in os.listdir(destination_directory):
             if file in dot_files_to_rename:
-                os.rename(os.path.join(destination_directory, file),
-                          os.path.join(destination_directory,
-                                       dot_files_to_rename[file]))
+                os.rename(destination_directory / file,
+                          destination_directory / dot_files_to_rename[file])
 
     else:
         logger.error(f"Selected template not available.")

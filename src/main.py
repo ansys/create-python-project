@@ -1,6 +1,7 @@
 # Copyright (c) 2022 Ansys, Inc. and its affiliates. Unauthorised use, distribution or duplication is prohibited
 # LICENSE file is in the root directory of this source tree.
 import os
+import pathlib
 import sys
 import tempfile
 from datetime import datetime
@@ -20,7 +21,7 @@ def cli():
     parser.add_argument("-t", "--Template", help="Set the project template")
     args = parser.parse_args()
 
-    generate_project_folder(os.getcwd(), args.Name, args.Template)
+    generate_project_folder(pathlib.Path.cwd(), args.Name, args.Template)
 
     return
 

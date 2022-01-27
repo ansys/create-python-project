@@ -34,7 +34,7 @@ class Colors:
     UNDERLINE = '\033[4m'
 
 
-def hasPipx():
+def has_pipx():
     try:
         subprocess.run(["pipx", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         logger.info("pipx installed")
@@ -45,8 +45,6 @@ def hasPipx():
 
 
 def get_templates(templates_directory):
-    templates = None
-
     if not os.path.isdir(templates_directory):
         logger.error("Templates not found")
         raise Exception('templates directory not found')
@@ -70,15 +68,15 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
     available_templates = get_templates(templates_dir)
 
     if not project_name:
-        project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should we name your project ?")
+        project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should the project be called?")
 
     destination_directory = os.path.join(root_directory, project_name)
     if os.path.isdir(destination_directory):
-        logger.error(f"Directory already exists at path {destination_directory}")
+        logger.error(f"Directory already exists: {destination_directory}")
         exit(1)
 
     if not user_template:
-        logger.error("A template choice is missing in your command")
+        logger.error("No template command provided.")
         logger.info("Get help for commands with pipx run ansys-ace-project-gen --help")
         exit(1)
     if user_template in available_templates:
@@ -92,17 +90,20 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
 
     else:
         logger.error(f"Selected template not available.")
-        logger.info("Here are the templates available.")
+        logger.info("Available templates:")
         print(available_templates)
         exit(1)
 
-    logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully based on {user_template} template !{Colors.BOLD}")
-    print(emoji.emojize(f"""{Colors.OKCYAN}We recommend you the following steps to pursue")
-        1- Go inside the created directory by running cd ./{project_name} 
-        2- Push this project in git remote repository"
+    logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully "
+                f"based on {user_template} template!{Colors.BOLD}")
+    print(emoji.emojize(f"""{Colors.OKCYAN}We recommend you track your project using git 
+    and store it in a remote repository, such as on ADO or GitHub. 
+    This can be done by following these instructions provided you already have git installed.
+        1- Navigate to the created project directory on the command line ./{project_name} 
+        2- Make the directory into a git repo and link it to a remote origin (GitHub/ADO/etc.)
             2.1 [Optional] -  git init
-            2.2 [Optional] -  git remote add origin <git_repository_url>")
-            2.3 [Optional] -  git add . && git commit -m \"initial commit\"")
+            2.2 [Optional] -  git remote add origin <git_repository_url>)
+            2.3 [Optional] -  git add . && git commit -m \"initial commit\")
             2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
 
     {Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}"""))

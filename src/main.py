@@ -13,7 +13,7 @@ __version__ = '0.0.11'
 def cli():
     if '--version' in sys.argv[1:]:
         print(__version__)
-        exit(0)
+        return
 
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--Name", help="Set the project name")
@@ -22,7 +22,7 @@ def cli():
 
     generate_project_folder(os.getcwd(), args.Name, args.Template)
 
-    exit(0)
+    return
 
 
 if __name__ == '__main__':

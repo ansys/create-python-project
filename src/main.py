@@ -28,7 +28,8 @@ def cli():
 
 if __name__ == '__main__':
     if __debug__:
-        generate_project_folder(tempfile.gettempdir(), f'my-project-{ datetime.today().strftime("%Y-%m-%d-%H-%M-%S")}', 'classic')
+        generate_project_folder(pathlib.Path(tempfile.gettempdir()),
+                                f'my-project-{ datetime.today().strftime("%Y-%m-%d-%H-%M-%S")}', 'classic')
     else:
         cli()
 

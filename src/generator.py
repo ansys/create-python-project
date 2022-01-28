@@ -45,10 +45,19 @@ def has_pipx():
         return False
 
 
+def replace_word_in_file(filepath, word_to_replace, new_value):
+    with open(filepath) as file:
+        input_data = file.read()
+        input_data = input_data.replace(word_to_replace, new_value)
+        file.close()
+        with open(filepath, 'w') as new_file:
+            new_file.write(input_data)
+
+
 def get_templates(templates_directory: pathlib.Path):
     if not templates_directory.is_dir():
         logger.error("Templates not found")
-        raise Exception('templates directory not found')
+        raise NotADirectoryError('templates directory not found')
     else:
         templates = templates_directory.glob('*')
     return [x for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
@@ -66,11 +75,10 @@ def copy_template(templates_directory: pathlib.Path, template: str, destination:
 
 def generate_project_folder(root_directory: pathlib.Path, project_name: str = None, user_template: str = None):
     templates_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
-    available_templates = get_templates(templates_dir)
+    available_templates = {p.name for p in get_templates(templates_dir)}
 
     if not project_name:
         project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should the project be called?")
-
 
     destination_directory = root_directory / project_name
     if destination_directory.is_dir():
@@ -89,12 +97,15 @@ def generate_project_folder(root_directory: pathlib.Path, project_name: str = No
             if file in dot_files_to_rename:
                 os.rename(destination_directory / file,
                           destination_directory / dot_files_to_rename[file])
-
     else:
-        logger.error(f"Selected template not available.")
+        if user_template == 'shared':
+            error = "'shared' is a reserved directory and can not be used as a template name."
+        else:
+            error = f"Selected template \"{user_template}\" not available."
+        logger.error(error)
         logger.info("Available templates:")
         print(available_templates)
-        raise ValueError(f"Requested template \"{user_template}\" does not exist.")
+        raise ValueError(error)
 
     logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully "
                 f"based on {user_template} template!{Colors.BOLD}")
@@ -113,10 +124,3 @@ def generate_project_folder(root_directory: pathlib.Path, project_name: str = No
     return
 
 
-def replace_word_into_file(filepath, word_to_replace, new_value):
-    with open(filepath) as file:
-        input_data = file.read()
-        input_data = input_data.replace(word_to_replace, new_value)
-        file.close()
-        with open(filepath, 'w') as new_file:
-            new_file.write(input_data)

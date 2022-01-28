@@ -64,7 +64,7 @@ jobs:
     #     labels: workflow-failed
     #     body: ${{ steps.pytester-cov.outputs.output-table }}
 
-    - name: Coverage single fail - exit
+    - name: Insufficient Test Coverage; one file failed - exit
       if: ${{ steps.pytester-cov.outputs.cov-threshold-single-fail == 'true' }}
       run: |
         echo "cov single fail ${{ steps.pytester-cov.outputs.cov-threshold-single-fail }}"
@@ -80,7 +80,7 @@ jobs:
     #     labels: workflow-failed
     #     body: ${{ steps.pytester-cov.outputs.output-table }}
 
-    - name: Coverage total fail - exit
+    - name: Insufficient Test Coverage; project failed - exit
       if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
       run: |
         echo "cov single fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"

@@ -15,14 +15,11 @@ def cli():
     if '--version' in sys.argv[1:]:
         print(__version__)
         return
-
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--Name", help="Set the project name")
     parser.add_argument("-t", "--Template", help="Set the project template")
     args = parser.parse_args()
-
     generate_project_folder(pathlib.Path.cwd(), args.Name, args.Template)
-
     return
 
 

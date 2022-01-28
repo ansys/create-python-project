@@ -8,12 +8,10 @@
 #     * pytest-root-dir: top-level directory to recursively check all .py files for `pytest --cov`
 #     * cov-omit-list: comma separated str of all files and/or dirs to ignore
 #   * env:
-#     * COVERAGE_SINGLE: minimum individual file coverage required
 #     * COVERAGE_TOTAL: minimum total coverage required
 #
 # Action outputs:
 #   * output-table: `pytest --cov` markdown output table
-#   * cov-threshold-single-fail: `false` if any single file coverage less than `cov-threshold-single`, else `true`
 #   * cov-threshold-total-fail: `false` if total coverage less than `cov-threshold-total`, else `true`
 #
 # Workflows used:
@@ -23,15 +21,14 @@
 
 name: pytester-cov workflow
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
     env:
-      COVERAGE_SINGLE: 60
-      COVERAGE_TOTAL: 60
+      COVERAGE_TOTAL: 80
 
     steps:
     - uses: actions/checkout@v2
@@ -50,38 +47,13 @@ jobs:
       uses: alexanderdamiani/pytester-cov@v1.2.0
       with:
         pytest-root-dir: '.'
-        cov-omit-list: 'tests/*, doc/*'
-        cov-threshold-single: ${{ env.COVERAGE_SINGLE }}
+        cov-omit-list: 'tests/*, doc/*, src/templates/*'
         cov-threshold-total: ${{ env.COVERAGE_TOTAL }}
-
-    # - name: Coverage single fail - new issue
-    #   if: ${{ steps.pytester-cov.outputs.cov-threshold-single-fail == 'true' }}
-    #   uses: nashmaniac/create-issue-action@v1.1
-    #   with:
-    #     title: Pytest coverage single falls below minimum ${{ env.COVERAGE_SINGLE }}
-    #     token: ${{secrets.GITHUB_TOKEN}}
-    #     assignees: ${{github.actor}}
-    #     labels: workflow-failed
-    #     body: ${{ steps.pytester-cov.outputs.output-table }}
-
-    # - name: Coverage total fail - new issue
-    #   if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
-    #   uses: nashmaniac/create-issue-action@v1.1
-    #   with:
-    #     title: Pytest coverage total falls below minimum ${{ env.COVERAGE_TOTAL }}
-    #     token: ${{secrets.GITHUB_TOKEN}}
-    #     assignees: ${{github.actor}}
-    #     labels: workflow-failed
-    #     body: ${{ steps.pytester-cov.outputs.output-table }}
 
     - name: Insufficient Test Coverage; project failed - exit
       if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
       run: |
-        echo "coverage failutr ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
+        echo "coverage failure ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
         echo "${{ steps.pytester-cov.outputs.output-table }}"
+        echo "Min total coverage: ${{ env.COVERAGE_TOTAL }}"
         exit 1
-
-    # - name: Commit pytest coverage table
-    #   uses: peter-evans/commit-comment@v1
-    #   with:
-    #     body: ${{ steps.pytester-cov.outputs.output-table }}

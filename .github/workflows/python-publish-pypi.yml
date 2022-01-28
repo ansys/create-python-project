@@ -35,4 +35,4 @@ jobs:
        TWINE_PASSWORD: $(PYPI_TOKEN)
        TWINE_REPOSITORY_URL: "https://test.pypi.org/legacy/"
      run: |
-       twine upload --skip-existing --repository testpypi dist/*
+       twine upload --skip-existing --verbose --repository testpypi dist/*

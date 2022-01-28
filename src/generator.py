@@ -1,6 +1,7 @@
 # Copyright (c) 2022 Ansys, Inc. and its affiliates. Unauthorised use, distribution or duplication is prohibited
 # LICENSE file is in the root directory of this source tree.
 import os
+import pathlib
 import subprocess
 import shutil
 import emoji
@@ -44,55 +45,56 @@ def has_pipx():
         return False
 
 
-def get_templates(templates_directory):
-    if not os.path.isdir(templates_directory):
+def get_templates(templates_directory: pathlib.Path):
+    if not templates_directory.is_dir():
         logger.error("Templates not found")
         raise Exception('templates directory not found')
     else:
-        templates = os.listdir(templates_directory)
-    return [x for x in templates if x != 'shared' and not x.startswith('.') and not x.startswith('README')]
+        templates = templates_directory.glob('*')
+    return [x for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
 
 
-def copy_template(templates_directory, template, destination):
+def copy_template(templates_directory: pathlib.Path, template: str, destination: pathlib.Path):
     # Copy shared resources
-    shared_directory = os.path.join(templates_directory, 'shared')
+    shared_directory = templates_directory / 'shared'
     shutil.copytree(shared_directory, destination, dirs_exist_ok=True)
 
     # Copy template resources
-    template_directory = os.path.join(templates_directory, template)
+    template_directory = templates_directory / template
     shutil.copytree(template_directory, destination, dirs_exist_ok=True)
 
 
-def generate_project_folder(root_directory, project_name=None, user_template=None):
-    templates_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'templates')
+def generate_project_folder(root_directory: pathlib.Path, project_name: str = None, user_template: str = None):
+    templates_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
     available_templates = get_templates(templates_dir)
 
     if not project_name:
         project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should the project be called?")
 
-    destination_directory = os.path.join(root_directory, project_name)
-    if os.path.isdir(destination_directory):
-        logger.error(f"Directory already exists: {destination_directory}")
-        exit(1)
+
+    destination_directory = root_directory / project_name
+    if destination_directory.is_dir():
+        error = f"Directory already exists at path {destination_directory}"
+        logger.error(error)
+        raise IsADirectoryError(error)
 
     if not user_template:
         logger.error("No template command provided.")
         logger.info("Get help for commands with pipx run ansys-ace-project-gen --help")
-        exit(1)
+        raise ValueError("No template value provided.")
     if user_template in available_templates:
         copy_template(templates_dir, user_template, destination_directory)
 
         for file in os.listdir(destination_directory):
             if file in dot_files_to_rename:
-                os.rename(os.path.join(destination_directory, file),
-                          os.path.join(destination_directory,
-                                       dot_files_to_rename[file]))
+                os.rename(destination_directory / file,
+                          destination_directory / dot_files_to_rename[file])
 
     else:
         logger.error(f"Selected template not available.")
         logger.info("Available templates:")
         print(available_templates)
-        exit(1)
+        raise ValueError(f"Requested template \"{user_template}\" does not exist.")
 
     logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully "
                 f"based on {user_template} template!{Colors.BOLD}")
@@ -102,12 +104,13 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
         1- Navigate to the created project directory on the command line ./{project_name} 
         2- Make the directory into a git repo and link it to a remote origin (GitHub/ADO/etc.)
             2.1 [Optional] -  git init
-            2.2 [Optional] -  git remote add origin <git_repository_url>)
-            2.3 [Optional] -  git add . && git commit -m \"initial commit\")
+            2.2 [Optional] -  git remote add origin <git_repository_url>
+            2.3 [Optional] -  git add . && git commit -m \"initial commit\"
             2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
 
     {Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}"""))
     logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))
+    return
 
 
 def replace_word_into_file(filepath, word_to_replace, new_value):

@@ -19,7 +19,7 @@
 #   * alexanderdamiani/pytester-cov@v1.2.0: runs `pytest --cov` and associated functions
 # **************************************************************************************************************** #
 
-name: pytester-cov workflow
+name: check total test coverage >= 80%
 
 on: [push]
 

@@ -1,5 +1,6 @@
 from src.generator import copy_template, get_templates, \
     generate_project_folder, replace_word_in_file
+from src.main import cli, __version__, create_parser
 
 
 def create_x_many_templates(path, num):

@@ -11,16 +11,23 @@ import argparse
 __version__ = '0.0.11'
 
 
-def cli():
+def cli(root_folder=None):
     if '--version' in sys.argv[1:]:
         print(__version__)
         return
+    parser = create_parser()
+    args = parser.parse_args(sys.argv[1:])
+    if root_folder is None:
+        root_folder = pathlib.Path.cwd()
+    generate_project_folder(root_folder, args.Name, args.Template)
+    return
+
+
+def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--Name", help="Set the project name")
     parser.add_argument("-t", "--Template", help="Set the project template")
-    args = parser.parse_args()
-    generate_project_folder(pathlib.Path.cwd(), args.Name, args.Template)
-    return
+    return parser
 
 
 if __name__ == '__main__':

@@ -27,10 +27,10 @@ steps:
 - name: Build package
   run: python -m build
 
-- name: Publish package
-  uses: pypa/gh-action-pypi-publish@<find hash from template>
-  with:
-  user: __token__
-  password: ${{ secrets.PYPI_API_TOKEN }}
+#- name: Publish package
+#  uses: pypa/gh-action-pypi-publish@<find hash from template>
+#  with:
+#  user: __token__
+#  password: ${{ secrets.PYPI_API_TOKEN }}
 
 # https://github:com/pyansys/pyaedt/blob/main/.github/workflows/releases.yml - Massimo versions

@@ -18,5 +18,3 @@ def dummy_templates_path(tmp_path):
     for name in ['README.md', 'README.rst', 'README.txt', '.dummy']:
         create_text_file_in_directory(templates_path, name)
     return templates_path
-
-

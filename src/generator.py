@@ -74,13 +74,14 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
 
     destination_directory = os.path.join(root_directory, project_name)
     if os.path.isdir(destination_directory):
-        logger.error(f"Directory already exists at path {destination_directory}")
-        exit(1)
+        error = f"Directory already exists at path {destination_directory}"
+        logger.error(error)
+        raise IsADirectoryError(error)
 
     if not user_template:
         logger.error("A template choice is missing in your command")
         logger.info("Get help for commands with pipx run ansys-ace-project-gen --help")
-        exit(1)
+        raise ValueError("No template value provided.")
     if user_template in available_templates:
         copy_template(templates_dir, user_template, destination_directory)
 
@@ -94,7 +95,7 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
         logger.error(f"Selected template not available.")
         logger.info("Here are the templates available.")
         print(available_templates)
-        exit(1)
+        raise ValueError(f"Requested template \"{user_template}\" does not exist.")
 
     logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully based on {user_template} template !{Colors.BOLD}")
     print(emoji.emojize(f"""{Colors.OKCYAN}We recommend you the following steps to pursue")
@@ -107,6 +108,7 @@ def generate_project_folder(root_directory, project_name=None, user_template=Non
 
     {Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}"""))
     logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))
+    return
 
 
 def replace_word_into_file(filepath, word_to_replace, new_value):

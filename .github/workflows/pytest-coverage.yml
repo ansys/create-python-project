@@ -64,12 +64,6 @@ jobs:
     #     labels: workflow-failed
     #     body: ${{ steps.pytester-cov.outputs.output-table }}
 
-    - name: Insufficient Test Coverage; one file failed - exit
-      if: ${{ steps.pytester-cov.outputs.cov-threshold-single-fail == 'true' }}
-      run: |
-        echo "cov single fail ${{ steps.pytester-cov.outputs.cov-threshold-single-fail }}"
-        exit 1
-
     # - name: Coverage total fail - new issue
     #   if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
     #   uses: nashmaniac/create-issue-action@v1.1
@@ -83,7 +77,8 @@ jobs:
     - name: Insufficient Test Coverage; project failed - exit
       if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
       run: |
-        echo "cov single fail ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
+        echo "coverage failutr ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
+        echo "${{ steps.pytester-cov.outputs.output-table }}"
         exit 1
 
     # - name: Commit pytest coverage table

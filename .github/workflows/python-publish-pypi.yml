@@ -5,33 +5,33 @@
 # separate terms of service, privacy policy, and support
 # documentation.
 name: Upload Python Package
-on:
-release:
-types: [published]
+
+on: [release]
+
 jobs:
+ deploy:
+  name: Publish to pypi
+  runs-on: ubuntu-latest
 
-deploy:
- runs-on: ubuntu-latest
+  steps:
+   - uses: actions/checkout@v2
+   - name: Set up Python
+     uses: actions/setup-python@v2
+     with:
+      python-version: '3.x'
 
-steps:
-- uses: actions/checkout@v2
-- name: Set up Python
-  uses: actions/setup-python@v2
-  with:
-  python-version: '3.x'
+   - name: Install dependencies
+     run: |
+       python -m pip install --upgrade pip
+       pip install build
 
-- name: Install dependencies
-  run: |
-    python -m pip install --upgrade pip
-    pip install build
+   - name: Build package
+     run: python -m build
 
-- name: Build package
-  run: python -m build
-
-#- name: Publish package
-#  uses: pypa/gh-action-pypi-publish@<find hash from template>
-#  with:
-#  user: __token__
-#  password: ${{ secrets.PYPI_API_TOKEN }}
-
-# https://github:com/pyansys/pyaedt/blob/main/.github/workflows/releases.yml - Massimo versions
+   - name: Build and publish
+     env:
+       TWINE_USERNAME: __token__
+       TWINE_PASSWORD: $(PYPI_TOKEN)
+#        TWINE_REPOSITORY_URL: "https://upload.pypi.org/legacy/"
+     run: |
+       twine upload --skip-existing --repository testpypi dist/*

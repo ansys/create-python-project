@@ -67,12 +67,22 @@ class ProjectGenerator:
     def selected_template(self):
         self.check_valid_selected_template()
         return self._selected_template
+
+    @selected_template.setter
+    def selected_template(self, value: str):
+        self._selected_template = value
+        self.check_valid_selected_template()
         
     @property
     def templates_directory(self):
         if self._templates_directory is None:
             self._templates_directory = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
         return self._templates_directory
+
+    @templates_directory.setter
+    def templates_directory(self, value: pathlib.Path):
+        assert value.is_dir(), f"Supplied path {value} is not a directory"
+        self._templates_directory = value
 
     @property
     def templates(self):
@@ -86,7 +96,7 @@ class ProjectGenerator:
             templates = self.templates_directory.glob('*')
         return [x.name for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
 
-    def copy_template(self):
+    def copy_template_to_destination(self):
         # Copy template resources
         template_directory = self.templates_directory / self.selected_template
         shutil.copytree(template_directory, self.destination, dirs_exist_ok=True)
@@ -135,7 +145,7 @@ class ProjectGenerator:
         raise ValueError(error)
 
     def copy_template_and_rename_files(self):
-        self.copy_template()
+        self.copy_template_to_destination()
         for file in os.listdir(self.destination):
             if file in dot_files_to_rename:
                 os.rename(self.destination / file,

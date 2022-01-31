@@ -34,7 +34,7 @@ class TestCopyTemplate:
                                      templates_directory=dummy_templates_path,
                                      selected_template=name)
         create_one_template(dummy_templates_path, name)
-        result = generator.copy_template()  # dummy_templates_path, name, destination_directory)
+        result = generator.copy_template_to_destination()  # dummy_templates_path, name, destination_directory)
         assert result is None
 
 

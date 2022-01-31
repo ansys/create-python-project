@@ -1,5 +1,5 @@
 from src.generator import ProjectGenerator, replace_word_in_file
-
+from src.main import cli, create_parser
 
 def create_x_many_templates(path, num):
     for i in range(num):

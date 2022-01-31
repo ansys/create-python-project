@@ -1,48 +1,58 @@
-from common import get_templates, create_x_many_templates, \
-    copy_template, create_one_template, generate_project_folder, \
-    create_text_file_in_directory, replace_word_in_file
-import pathlib
+from common import create_x_many_templates, create_one_template, \
+    create_text_file_in_directory, replace_word_in_file, ProjectGenerator
 import pytest
 import datetime
 
 
 class TestGetTemplates:
-    def test_correct_number_returned(self, dummy_templates_path):
-        create_x_many_templates(dummy_templates_path, 5)
-        results = get_templates(dummy_templates_path)
+    def test_correct_number_returned(self, destination_directory, dummy_templates_path):
+        generator = ProjectGenerator(destination_directory.parent, 'test_project',
+                                     templates_directory=dummy_templates_path)
+        create_x_many_templates(generator.templates_directory, 5)
+        results = generator.get_templates()
         assert len(results) == 5
 
-    def test_only_returns_directories(self, dummy_templates_path):
-        create_x_many_templates(dummy_templates_path, 5)
-        results = get_templates(dummy_templates_path)
+    def test_only_returns_directories(self, destination_directory, dummy_templates_path):
+        generator = ProjectGenerator(destination_directory.parent, 'test_project',
+                                     templates_directory=dummy_templates_path)
+        create_x_many_templates(generator.templates_directory, 5)
+        results = generator.get_templates()
         for r in results:
-            assert r.is_dir()
+            assert (dummy_templates_path / r).is_dir()
 
-    def test_raises_error_when_not_directory(self, dummy_templates_path):
+    def test_raises_error_when_not_directory(self, destination_directory, dummy_templates_path):
+        generator = ProjectGenerator(destination_directory.parent, 'test_project',
+                                     templates_directory=dummy_templates_path / 'README.txt')
         with pytest.raises(NotADirectoryError):
-            get_templates(pathlib.Path(dummy_templates_path / 'README.txt'))
+            generator.get_templates()
 
 
 class TestCopyTemplate:
-    def test_simple_copy(self, dummy_templates_path, destination_directory):
+    def test_simple_copy(self, destination_directory, dummy_templates_path):
         name = f'my_new_template{datetime.datetime.now().microsecond}'
+        generator = ProjectGenerator(destination_directory.parent, 'test_project',
+                                     templates_directory=dummy_templates_path,
+                                     selected_template=name)
         create_one_template(dummy_templates_path, name)
-        result = copy_template(dummy_templates_path, name, destination_directory)
+        result = generator.copy_template()  # dummy_templates_path, name, destination_directory)
         assert result is None
 
 
 class TestGenerateProjectFolder:
     @pytest.mark.parametrize('template', ['classic', 'gRPC-api', 'package', 'rest-api'])
-    def test_internal_templates(self, dummy_templates_path, destination_directory, template):
-        generate_project_folder(destination_directory, 'my_project', template)
+    def test_internal_templates(self, destination_directory, template):
+        pg = ProjectGenerator(destination_directory, 'test_proj', template)
+        pg.generate()
 
-    def test_shared_template_fails(self, dummy_templates_path, destination_directory):
+    def test_shared_template_fails(self, destination_directory):
         with pytest.raises(ValueError):
-            generate_project_folder(destination_directory, 'my_project', 'shared')
+            pg = ProjectGenerator(destination_directory, 'test_proj', 'shared')
+            pg.generate()
 
-    def test_nonsense_template_fails(self, dummy_templates_path, destination_directory):
+    def test_nonsense_template_fails(self, destination_directory):
         with pytest.raises(ValueError):
-            generate_project_folder(destination_directory, 'my_project', 'this definitely does not exist')
+            pg = ProjectGenerator(destination_directory, 'test_proj', 'bogus template')
+            pg.generate()
 
 
 class TestReplaceWordInFile:

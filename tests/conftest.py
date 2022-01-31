@@ -1,5 +1,5 @@
 import pytest
-from common import create_text_file_in_directory
+from common import create_text_file_in_directory, ProjectGenerator
 
 
 @pytest.fixture()
@@ -20,3 +20,7 @@ def dummy_templates_path(tmp_path):
     return templates_path
 
 
+@pytest.fixture()
+def generator(dummy_templates_path, destination_directory):
+    return ProjectGenerator(destination_directory.parent, 'test_project',
+                            templates_directory=dummy_templates_path)

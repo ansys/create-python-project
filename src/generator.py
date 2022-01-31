@@ -54,73 +54,97 @@ def replace_word_in_file(filepath, word_to_replace, new_value):
             new_file.write(input_data)
 
 
-def get_templates(templates_directory: pathlib.Path):
-    if not templates_directory.is_dir():
-        logger.error("Templates not found")
-        raise NotADirectoryError('templates directory not found')
-    else:
-        templates = templates_directory.glob('*')
-    return [x for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
+class ProjectGenerator:
+    def __init__(self, root_directory: pathlib.Path, project_name: str,
+                 selected_template: str = 'classic', templates_directory: pathlib.Path = None):
+        self.root = root_directory
+        self.project = project_name
+        self.destination = self.root / self.project
+        self._selected_template = selected_template
+        self._templates_directory = templates_directory
 
+    @property
+    def selected_template(self):
+        self.check_valid_selected_template()
+        return self._selected_template
+        
+    @property
+    def templates_directory(self):
+        if self._templates_directory is None:
+            self._templates_directory = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
+        return self._templates_directory
 
-def copy_template(templates_directory: pathlib.Path, template: str, destination: pathlib.Path):
-    # Copy shared resources
-    shared_directory = templates_directory / 'shared'
-    shutil.copytree(shared_directory, destination, dirs_exist_ok=True)
+    @property
+    def templates(self):
+        return self.get_templates()
 
-    # Copy template resources
-    template_directory = templates_directory / template
-    shutil.copytree(template_directory, destination, dirs_exist_ok=True)
+    def get_templates(self):
+        if not self.templates_directory.is_dir():
+            logger.error("Templates not found")
+            raise NotADirectoryError('templates directory not found')
+        else:
+            templates = self.templates_directory.glob('*')
+        return [x.name for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
 
+    def copy_template(self):
+        # Copy template resources
+        template_directory = self.templates_directory / self.selected_template
+        shutil.copytree(template_directory, self.destination, dirs_exist_ok=True)
 
-def generate_project_folder(root_directory: pathlib.Path, project_name: str = None, user_template: str = None):
-    templates_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
-    available_templates = {p.name for p in get_templates(templates_dir)}
+        # Copy shared resources
+        shared_directory = self.templates_directory / 'shared'
+        shutil.copytree(shared_directory, self.destination, dirs_exist_ok=True)
 
-    if not project_name:
-        project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should the project be called?")
+    def generate(self):
+        logger.info(f'Attempting to copy {self.selected_template} to {self.destination}')
+        self.check_destination_directory_empty()
+        self.copy_template_and_rename_files()
 
-    destination_directory = root_directory / project_name
-    if destination_directory.is_dir():
-        error = f"Directory already exists at path {destination_directory}"
-        logger.error(error)
-        raise IsADirectoryError(error)
+        logger.info(f"{Colors.BOLD}The {self.project} project has been initialized successfully "
+                    f"based on {self.selected_template} template!{Colors.BOLD}")
+        message = f"""{Colors.OKCYAN}We recommend you track your project using git 
+        and store it in a remote repository, such as on ADO or GitHub. 
+        This can be done by following these instructions provided you already have git installed.
+            1- Navigate to the created project directory on the command line ./{self.project} 
+            2- Make the directory into a git repo and link it to a remote origin (GitHub/ADO/etc.)
+                2.1 [Optional] -  git init
+                2.2 [Optional] -  git remote add origin <git_repository_url>
+                2.3 [Optional] -  git add . && git commit -m \"initial commit\"
+                2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
+    
+        {Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}
+        """
+        print(emoji.emojize(message))
+        logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))
+        return
 
-    if not user_template:
-        logger.error("No template command provided.")
-        logger.info("Get help for commands with pipx run ansys-ace-project-gen --help")
-        raise ValueError("No template value provided.")
-    if user_template in available_templates:
-        copy_template(templates_dir, user_template, destination_directory)
+    def check_valid_selected_template(self):
+        if self._selected_template in self.templates:
+            return
+        else:
+            self.raise_error_for_unavailable_template()
 
-        for file in os.listdir(destination_directory):
-            if file in dot_files_to_rename:
-                os.rename(destination_directory / file,
-                          destination_directory / dot_files_to_rename[file])
-    else:
-        if user_template == 'shared':
+    def raise_error_for_unavailable_template(self):
+        if self._selected_template == 'shared':
             error = "'shared' is a reserved directory and can not be used as a template name."
         else:
-            error = f"Selected template \"{user_template}\" not available."
+            error = f"Selected template \"{self._selected_template}\" not available."
         logger.error(error)
         logger.info("Available templates:")
-        print(available_templates)
+        print(self.templates)
         raise ValueError(error)
 
-    logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully "
-                f"based on {user_template} template!{Colors.BOLD}")
-    print(emoji.emojize(f"""{Colors.OKCYAN}We recommend you track your project using git 
-    and store it in a remote repository, such as on ADO or GitHub. 
-    This can be done by following these instructions provided you already have git installed.
-        1- Navigate to the created project directory on the command line ./{project_name} 
-        2- Make the directory into a git repo and link it to a remote origin (GitHub/ADO/etc.)
-            2.1 [Optional] -  git init
-            2.2 [Optional] -  git remote add origin <git_repository_url>
-            2.3 [Optional] -  git add . && git commit -m \"initial commit\"
-            2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
+    def copy_template_and_rename_files(self):
+        self.copy_template()
+        for file in os.listdir(self.destination):
+            if file in dot_files_to_rename:
+                os.rename(self.destination / file,
+                          self.destination / dot_files_to_rename[file])
 
-    {Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}"""))
-    logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))
-    return
+    def check_destination_directory_empty(self):
+        if self.destination.is_dir() and [d for d in self.destination.iterdir()]:
+            error = f"Populated directory already exists at path {self.destination}"
+            logger.error(error)
+            raise FileExistsError(error)
 
 

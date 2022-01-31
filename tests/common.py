@@ -1,5 +1,4 @@
-from src.generator import copy_template, get_templates, \
-    generate_project_folder, replace_word_in_file
+from src.generator import ProjectGenerator, replace_word_in_file
 
 
 def create_x_many_templates(path, num):

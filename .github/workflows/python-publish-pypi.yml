@@ -18,7 +18,7 @@ jobs:
    - name: Set up Python
      uses: actions/setup-python@v2
      with:
-      python-version: '3.8'
+      python-version: '3.x'
 
    - name: Install dependencies
      run: |
@@ -35,4 +35,5 @@ jobs:
        TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
        TWINE_REPOSITORY_URL: "https://test.pypi.org/legacy/"
      run: |
-       twine upload --skip-existing --repository testpypi dist/*
+       twine upload --repository testpypi dist/*
+# --skip-existing

@@ -8,7 +8,7 @@ CLASSIFIERS = [
 ]
 
 setup(name='ansys-create-python-project',
-      version='0.0.2',
+      version='0.0.3',
       url='',
       author='ANSYS, Inc.',
       maintainer='Babacar Fall',

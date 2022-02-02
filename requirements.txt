@@ -1,5 +1,5 @@
-coloredlogs==15.0.1
-easygui==0.98.2
-emoji==1.6.3
-humanfriendly==10.0
-pyreadline3==3.4.1
+coloredlogs
+easygui
+emoji
+humanfriendly
+pyreadline3

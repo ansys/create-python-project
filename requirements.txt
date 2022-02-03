@@ -1,3 +1,2 @@
-easygui
-coloredlogs
-emoji
+coloredlogs~=15.0.1
+emoji~=1.6.3

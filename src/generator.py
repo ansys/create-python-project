@@ -66,11 +66,11 @@ def get_templates(templates_directory: pathlib.Path):
 def copy_template(templates_directory: pathlib.Path, template: str, destination: pathlib.Path):
     # Copy shared resources
     shared_directory = templates_directory / 'shared'
-    shutil.copytree(shared_directory, destination, dirs_exist_ok=True)
+    shutil.copytree(shared_directory, destination, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
 
     # Copy template resources
     template_directory = templates_directory / template
-    shutil.copytree(template_directory, destination, dirs_exist_ok=True)
+    shutil.copytree(template_directory, destination, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
 
 
 def generate_project_folder(root_directory: pathlib.Path, project_name: str = None, user_template: str = None):

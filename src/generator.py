@@ -19,12 +19,12 @@ os.environ['COLOREDLOGS_LEVEL_STYLES'] = 'info=35;debug=28;warning=202;error=14;
 logger = logging.getLogger(__name__)
 
 coloredlogs.install(level='DEBUG')
-
+logger.setLevel(logging.INFO)
 
 def has_pipx():
     try:
         subprocess.run(["pipx", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        logger.info("pipx installed")
+        logger.debug("pipx installed")
         return True
     except:
         logger.error("pipx is not installed. Follow these instructions https://pypa.github.io/pipx/installation/")
@@ -32,15 +32,15 @@ def has_pipx():
     
 
 def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path):
-    logger.info(f'Attempting to copy {source} to {target}')
+    logger.debug(f'Attempting to copy {source} to {target}')
     shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
     
     
 def rename_files_in_directory(directory: pathlib.Path):
-    logger.info(f'Renaming files in {directory}')
+    logger.debug(f'Renaming files in {directory}')
     for file in os.listdir(directory):
         if file in DOT_FILES_TO_RENAME:
-            logger.info(f'--- renaming {directory / file} to {directory / DOT_FILES_TO_RENAME[file]}')
+            logger.debug(f'--- renaming {directory / file} to {directory / DOT_FILES_TO_RENAME[file]}')
             os.rename(directory / file,
                       directory / DOT_FILES_TO_RENAME[file])
 
@@ -57,7 +57,7 @@ class ProjectTemplateAndDestinationChecker:
         self.destination = destination
 
     def check_valid_template(self):
-        logger.info(f'Checking that {self.template.template_directory} is a valid template')
+        logger.debug(f'Checking that {self.template.template_directory} is a valid template')
         if not self.template.template_directory.is_dir():
             logger.error(f"Template {self.template.template_directory} is not a directory")
             raise NotADirectoryError('templates directory not a directory')
@@ -65,14 +65,14 @@ class ProjectTemplateAndDestinationChecker:
             logger.error(f"The 'shared' name is reserved and can not be used for a template. "
                          f"{self.template.template_directory} is named 'shared'")
             raise ValueError('template must not be called \'shared\'')
-        logger.info('confirmed')
+        logger.debug('confirmed')
 
     def check_valid_shared_directory(self):
-        logger.info(f'Checking that {self.template.shared_files_directory} is a real directory')
+        logger.debug(f'Checking that {self.template.shared_files_directory} is a real directory')
         if not self.template.shared_files_directory.is_dir():
             logger.error(f"Template {self.template.shared_files_directory} is not a directory")
             raise NotADirectoryError('"shared" directory not a directory')
-        logger.info('confirmed')
+        logger.debug('confirmed')
 
     def check(self):
         self.check_valid_template()
@@ -80,7 +80,7 @@ class ProjectTemplateAndDestinationChecker:
         self.check_destination_empty()
 
     def check_destination_empty(self):
-        logger.info(f'Checking that {self.destination} is currently empty')
+        logger.debug(f'Checking that {self.destination} is currently empty')
         if self.destination.is_dir() and [d for d in self.destination.iterdir()]:
             error = f"Populated directory already exists at path {self.destination}"
             logger.error(error)
@@ -90,15 +90,14 @@ class ProjectTemplateAndDestinationChecker:
 class ProjectGenerator:
     def __init__(self, template: ProjectTemplate):
         self.template = template
-        
+
     def generate_template_at_destination(self, destination: pathlib.Path):
         ProjectTemplateAndDestinationChecker(self.template, destination).check()
         copy_directory_and_contents_to_new_location(self.template.template_directory, destination)
         if self.template.shared_files_directory is not None:
             copy_directory_and_contents_to_new_location(self.template.shared_files_directory, destination)
         rename_files_in_directory(destination)
-        
-        logger.info(f"{Colors.BOLD}The template project "
-                    f"(\"{self.template}\") has been initialized successfully {Colors.BOLD}")
-        print(emoji.emojize(GIT_RECC_LOG))
-        logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))
+
+        logger.info(emoji.emojize('Project created successfully :thumbs_up:  :clapping_hands:'))
+
+        print(GIT_RECC_LOG)

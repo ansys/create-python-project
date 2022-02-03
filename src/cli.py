@@ -3,8 +3,6 @@
 import os
 import pathlib
 import sys
-import tempfile
-from datetime import datetime
 from src.generator import ProjectGenerator, ProjectTemplate
 import argparse
 
@@ -41,12 +39,7 @@ def create_parser():
 
 
 if __name__ == '__main__':
-    if __debug__:
-        pg = ProjectGenerator(pathlib.Path(tempfile.gettempdir()),
-                              f'my-project-{ datetime.today().strftime("%Y-%m-%d-%H-%M-%S")}', 'classic')
-        pg.generate()
-    else:
-        cli()
+    cli()
 
 
 

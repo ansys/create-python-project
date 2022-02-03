@@ -6,7 +6,7 @@
 # documentation.
 name: Publish Python Package
 
-on: [release]
+on: [push]
 
 jobs:
  deploy:

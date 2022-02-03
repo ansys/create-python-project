@@ -8,7 +8,7 @@ CLASSIFIERS = [
 ]
 
 setup(name='ansys-create-python-project',
-      version='0.0.5',
+      version='0.0.1',
       url='',
       author='ANSYS, Inc.',
       maintainer='Babacar Fall',
@@ -18,7 +18,7 @@ setup(name='ansys-create-python-project',
       keywords=['python', 'ansys', 'ace'],
       packages=['ansys-create-python-project'],
       package_dir={'ansys-create-python-project': 'src'},
-      install_requires=['easygui', 'coloredlogs', 'emoji'],
+      install_requires=['coloredlogs~=15.0.1', 'emoji~=1.6.3'],
       long_description=open('README.md').read(),
       long_description_content_type='text/markdown',
       include_package_data=True,

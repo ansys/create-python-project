@@ -34,7 +34,7 @@ def get_builtin_templates_path():
 def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--Name", help="Set the project name")
-    parser.add_argument("-t", "--Template", help="Set the project template")
+    parser.add_argument("-t", "--Template", help="Set the project template", default='classic', required=False)
     return parser
 
 

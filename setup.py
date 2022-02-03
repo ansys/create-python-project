@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 CLASSIFIERS = [
     "Development Status :: 1 - Planning",
@@ -11,10 +11,10 @@ setup(name='ansys-create-python-project',
       version='0.0.1',
       url='',
       license='MIT',
-      entry_points={"console_scripts": ["ansys-create-python-project = src.main:cli"]},
       description='Ansys Python Project Creator',
       keywords=['python', 'ansys', 'ace'],
-      packages=find_packages(),
+      packages=['ansys-create-python-project'],
+      package_dir={'ansys-create-python-project': 'src'},
       install_requires=['easygui', 'coloredlogs', 'emoji'],
       long_description=open('README.md').read(),
       long_description_content_type='text/markdown',

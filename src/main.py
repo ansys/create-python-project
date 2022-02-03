@@ -3,7 +3,7 @@
 import os
 import pathlib
 import sys
-from src.generator import ProjectGenerator, ProjectTemplate
+from .generator import ProjectGenerator, ProjectTemplate
 import argparse
 
 __version__ = '0.0.11'

@@ -7,7 +7,8 @@ import emoji
 import coloredlogs
 import logging
 from dataclasses import dataclass
-from src.constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
+from .constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
+
 
 os.environ['COLOREDLOGS_LOG_FORMAT'] = '%(asctime)s [%(levelname)s] %(message)s'
 os.environ['COLOREDLOGS_DATE_FORMAT'] = '%H:%M:%S'
@@ -21,7 +22,7 @@ coloredlogs.install(level='DEBUG')
 
 def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path):
     logger.info(f'Attempting to copy {source} to {target}')
-    shutil.copytree(source, target, dirs_exist_ok=True)
+    shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
     
     
 def rename_files_in_directory(directory: pathlib.Path):

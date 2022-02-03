@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 CLASSIFIERS = [
     "Development Status :: 1 - Planning",
@@ -14,9 +14,9 @@ setup(name='ansys-create-python-project',
       maintainer='Babacar Fall',
       maintainer_email='babacar.fall@ansys.com',
       license='MIT',
-      entry_points={"console_scripts": ["ansys-create-python-project = src.main:cli"]},
       description='Ansys Python Project Creator',
       keywords=['python', 'ansys', 'ace'],
+      update-package-details
       packages=find_packages(),
       install_requires=['coloredlogs~=15.0.1','emoji~=1.6.3'],
       long_description=open('README.md').read(),

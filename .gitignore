@@ -8,6 +8,7 @@
 *.o
 *.cache
 __pycache__/
+.vs/
 dist/
 # OS generated files #
 ######################

@@ -32,7 +32,7 @@ def has_pipx():
 
 def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path):
     logger.info(f'Attempting to copy {source} to {target}')
-    shutil.copytree(source, target, dirs_exist_ok=True)
+    shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
     
     
 def rename_files_in_directory(directory: pathlib.Path):

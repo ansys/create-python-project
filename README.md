@@ -26,7 +26,7 @@ This tool is compatible with Windows OS and Linux distributions.
 ### With pipx
 
 ```sh
-pipx run create-python-project -n my-app 
+pipx run ansys-create-python-project -n my-app 
 ```
 
 [pipx](https://pypa.github.io/pipx/) is a package runner tool that that helps to run applications written in Python.
@@ -79,13 +79,13 @@ The default generated project rely on the classic template. However, there are m
 To show the list of available template you can run the command below:
 
 ```sh
-pipx run create-python-project --template
+pipx run ansys-create-python-project --template
 ```
 
 To specify a specific template (for instance a flask rest api) you can run:
 
 ```sh
-pipx run create-python-project -n my-project -t flask-rest
+pipx run ansys-create-python-project -n my-project -t flask-rest
 ```
 
 ### Run tests locally

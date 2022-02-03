@@ -6,7 +6,9 @@ import shutil
 import emoji
 import coloredlogs
 import logging
-from easygui import *
+from dataclasses import dataclass
+from .constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
+
 
 os.environ['COLOREDLOGS_LOG_FORMAT'] = '%(asctime)s [%(levelname)s] %(message)s'
 os.environ['COLOREDLOGS_DATE_FORMAT'] = '%H:%M:%S'

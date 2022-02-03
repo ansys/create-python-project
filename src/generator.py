@@ -8,7 +8,8 @@ import emoji
 import coloredlogs
 import logging
 from dataclasses import dataclass
-from src.constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
+from .constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
+
 
 os.environ['COLOREDLOGS_LOG_FORMAT'] = '%(asctime)s [%(levelname)s] %(message)s'
 os.environ['COLOREDLOGS_DATE_FORMAT'] = '%H:%M:%S'

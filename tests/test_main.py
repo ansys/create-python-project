@@ -1,6 +1,8 @@
-from common import cli, create_parser
+from common import cli, create_parser, get_builtin_templates_path
 import pytest
 import sys
+import pathlib
+import os
 
 
 class TestCLI:
@@ -28,3 +30,11 @@ class TestCreateParser:
         sys.argv = ['', flag, 'classic']
         parser = create_parser()
         assert parser.parse_args().Template == 'classic'
+
+
+class TestGetTemplatesPath:
+    def test_builtin_path(self):
+        tests_directory = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
+        expected_templates_directory = tests_directory.parent / 'src' / 'templates'
+        actual_templates_directory = get_builtin_templates_path()
+        assert actual_templates_directory == expected_templates_directory

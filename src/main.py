@@ -5,7 +5,7 @@ import pathlib
 import sys
 import tempfile
 from datetime import datetime
-from src.generator import *
+from src.generator import ProjectGenerator, ProjectTemplate
 import argparse
 
 __version__ = '0.0.11'
@@ -19,8 +19,18 @@ def cli(root_folder=None):
     args = parser.parse_args(sys.argv[1:])
     if root_folder is None:
         root_folder = pathlib.Path.cwd()
-    generate_project_folder(root_folder, args.Name, args.Template)
+    templates_directory = get_builtin_templates_path()
+
+    template = templates_directory / args.Template
+    shared = templates_directory / 'shared'
+
+    project_generator = ProjectGenerator(ProjectTemplate(template, shared))
+    project_generator.generate_template_at_destination(root_folder / args.Name)
     return
+
+
+def get_builtin_templates_path():
+    return pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
 
 
 def create_parser():
@@ -32,8 +42,9 @@ def create_parser():
 
 if __name__ == '__main__':
     if __debug__:
-        generate_project_folder(pathlib.Path(tempfile.gettempdir()),
-                                f'my-project-{ datetime.today().strftime("%Y-%m-%d-%H-%M-%S")}', 'classic')
+        pg = ProjectGenerator(pathlib.Path(tempfile.gettempdir()),
+                              f'my-project-{ datetime.today().strftime("%Y-%m-%d-%H-%M-%S")}', 'classic')
+        pg.generate()
     else:
         cli()
 

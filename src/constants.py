@@ -26,5 +26,4 @@ This can be done by following these instructions provided you already have git i
         2.3 [Optional] -  git add . && git commit -m \"initial commit\"
         2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
 
-{Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}
 """

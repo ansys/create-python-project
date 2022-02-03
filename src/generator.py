@@ -2,7 +2,6 @@
 # LICENSE file is in the root directory of this source tree.
 import os
 import pathlib
-import subprocess
 import shutil
 import emoji
 import coloredlogs
@@ -20,15 +19,6 @@ logger = logging.getLogger(__name__)
 
 coloredlogs.install(level='DEBUG')
 logger.setLevel(logging.INFO)
-
-def has_pipx():
-    try:
-        subprocess.run(["pipx", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-        logger.debug("pipx installed")
-        return True
-    except:
-        logger.error("pipx is not installed. Follow these instructions https://pypa.github.io/pipx/installation/")
-        return False
     
 
 def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path):

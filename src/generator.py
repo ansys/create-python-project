@@ -7,7 +7,8 @@ import shutil
 import emoji
 import coloredlogs
 import logging
-from easygui import *
+from dataclasses import dataclass
+from src.constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
 os.environ['COLOREDLOGS_LOG_FORMAT'] = '%(asctime)s [%(levelname)s] %(message)s'
 os.environ['COLOREDLOGS_DATE_FORMAT'] = '%H:%M:%S'
@@ -18,22 +19,6 @@ logger = logging.getLogger(__name__)
 
 coloredlogs.install(level='DEBUG')
 
-dot_files_to_rename = {'flake8': '.flake8',
-                       'gitignore': '.gitignore',
-                       'gitattributes': '.gitattributes'}
-
-
-class Colors:
-    HEADER = '\033[95m'
-    OKBLUE = '\033[94m'
-    OKCYAN = '\033[96m'
-    OKGREEN = '\033[92m'
-    WARNING = '\033[93m'
-    FAIL = '\033[91m'
-    ENDC = '\033[0m'
-    BOLD = '\033[1m'
-    UNDERLINE = '\033[4m'
-
 
 def has_pipx():
     try:
@@ -43,84 +28,76 @@ def has_pipx():
     except:
         logger.error("pipx is not installed. Follow these instructions https://pypa.github.io/pipx/installation/")
         return False
+    
+
+def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path):
+    logger.info(f'Attempting to copy {source} to {target}')
+    shutil.copytree(source, target, dirs_exist_ok=True)
+    
+    
+def rename_files_in_directory(directory: pathlib.Path):
+    logger.info(f'Renaming files in {directory}')
+    for file in os.listdir(directory):
+        if file in DOT_FILES_TO_RENAME:
+            logger.info(f'--- renaming {directory / file} to {directory / DOT_FILES_TO_RENAME[file]}')
+            os.rename(directory / file,
+                      directory / DOT_FILES_TO_RENAME[file])
 
 
-def replace_word_in_file(filepath, word_to_replace, new_value):
-    with open(filepath) as file:
-        input_data = file.read()
-        input_data = input_data.replace(word_to_replace, new_value)
-        file.close()
-        with open(filepath, 'w') as new_file:
-            new_file.write(input_data)
+@dataclass
+class ProjectTemplate:
+    template_directory: pathlib.Path
+    shared_files_directory: pathlib.Path
 
 
-def get_templates(templates_directory: pathlib.Path):
-    if not templates_directory.is_dir():
-        logger.error("Templates not found")
-        raise NotADirectoryError('templates directory not found')
-    else:
-        templates = templates_directory.glob('*')
-    return [x for x in templates if x.is_dir() and x.name != 'shared' and not x.name.startswith('.')]
+class ProjectTemplateAndDestinationChecker:
+    def __init__(self, template: ProjectTemplate, destination: pathlib.Path):
+        self.template = template
+        self.destination = destination
+
+    def check_valid_template(self):
+        logger.info(f'Checking that {self.template.template_directory} is a valid template')
+        if not self.template.template_directory.is_dir():
+            logger.error(f"Template {self.template.template_directory} is not a directory")
+            raise NotADirectoryError('templates directory not a directory')
+        elif self.template.template_directory.name == 'shared':
+            logger.error(f"The 'shared' name is reserved and can not be used for a template. "
+                         f"{self.template.template_directory} is named 'shared'")
+            raise ValueError('template must not be called \'shared\'')
+        logger.info('confirmed')
+
+    def check_valid_shared_directory(self):
+        logger.info(f'Checking that {self.template.shared_files_directory} is a real directory')
+        if not self.template.shared_files_directory.is_dir():
+            logger.error(f"Template {self.template.shared_files_directory} is not a directory")
+            raise NotADirectoryError('"shared" directory not a directory')
+        logger.info('confirmed')
+
+    def check(self):
+        self.check_valid_template()
+        self.check_valid_shared_directory()
+        self.check_destination_empty()
+
+    def check_destination_empty(self):
+        logger.info(f'Checking that {self.destination} is currently empty')
+        if self.destination.is_dir() and [d for d in self.destination.iterdir()]:
+            error = f"Populated directory already exists at path {self.destination}"
+            logger.error(error)
+            raise FileExistsError(error)
 
 
-def copy_template(templates_directory: pathlib.Path, template: str, destination: pathlib.Path):
-    # Copy shared resources
-    shared_directory = templates_directory / 'shared'
-    shutil.copytree(shared_directory, destination, dirs_exist_ok=True)
-
-    # Copy template resources
-    template_directory = templates_directory / template
-    shutil.copytree(template_directory, destination, dirs_exist_ok=True)
-
-
-def generate_project_folder(root_directory: pathlib.Path, project_name: str = None, user_template: str = None):
-    templates_dir = pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
-    available_templates = {p.name for p in get_templates(templates_dir)}
-
-    if not project_name:
-        project_name = enterbox("Project Name", "Ansys ACE Project Generator", "What should the project be called?")
-
-    destination_directory = root_directory / project_name
-    if destination_directory.is_dir():
-        error = f"Directory already exists at path {destination_directory}"
-        logger.error(error)
-        raise IsADirectoryError(error)
-
-    if not user_template:
-        logger.error("No template command provided.")
-        logger.info("Get help for commands with pipx run ansys-ace-project-gen --help")
-        raise ValueError("No template value provided.")
-    if user_template in available_templates:
-        copy_template(templates_dir, user_template, destination_directory)
-
-        for file in os.listdir(destination_directory):
-            if file in dot_files_to_rename:
-                os.rename(destination_directory / file,
-                          destination_directory / dot_files_to_rename[file])
-    else:
-        if user_template == 'shared':
-            error = "'shared' is a reserved directory and can not be used as a template name."
-        else:
-            error = f"Selected template \"{user_template}\" not available."
-        logger.error(error)
-        logger.info("Available templates:")
-        print(available_templates)
-        raise ValueError(error)
-
-    logger.info(f"{Colors.BOLD}The {project_name} project has been initialized successfully "
-                f"based on {user_template} template!{Colors.BOLD}")
-    print(emoji.emojize(f"""{Colors.OKCYAN}We recommend you track your project using git 
-    and store it in a remote repository, such as on ADO or GitHub. 
-    This can be done by following these instructions provided you already have git installed.
-        1- Navigate to the created project directory on the command line ./{project_name} 
-        2- Make the directory into a git repo and link it to a remote origin (GitHub/ADO/etc.)
-            2.1 [Optional] -  git init
-            2.2 [Optional] -  git remote add origin <git_repository_url>
-            2.3 [Optional] -  git add . && git commit -m \"initial commit\"
-            2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
-
-    {Colors.WARNING}:collision: :star-struck: :star-struck: :star-struck: :star-struck: :collision:{Colors.WARNING}"""))
-    logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))
-    return
-
-
+class ProjectGenerator:
+    def __init__(self, template: ProjectTemplate):
+        self.template = template
+        
+    def generate_template_at_destination(self, destination: pathlib.Path):
+        ProjectTemplateAndDestinationChecker(self.template, destination).check()
+        copy_directory_and_contents_to_new_location(self.template.template_directory, destination)
+        if self.template.shared_files_directory is not None:
+            copy_directory_and_contents_to_new_location(self.template.shared_files_directory, destination)
+        rename_files_in_directory(destination)
+        
+        logger.info(f"{Colors.BOLD}The template project "
+                    f"(\"{self.template}\") has been initialized successfully {Colors.BOLD}")
+        print(emoji.emojize(GIT_RECC_LOG))
+        logger.info(emoji.emojize('Success :thumbs_up:  :clapping_hands:'))

@@ -7,9 +7,16 @@ import os
 
 class TestCLI:
     @pytest.mark.parametrize('flags', [[], ['--Name', 'thing'], ['--Template', 'classic']])
-    def test_version(self, flags):
+    def test_version_prefixes(self, flags):
         sys.argv = ['', '--version']
         sys.argv.extend(flags)
+        with pytest.raises(SystemExit):
+            cli()
+
+    @pytest.mark.parametrize('flags', [[], ['--Name', 'thing'], ['--Template', 'classic']])
+    def test_version_suffixes(self, flags):
+        sys.argv = [''] + flags
+        sys.argv.extend(['--version'])
         with pytest.raises(SystemExit):
             cli()
 

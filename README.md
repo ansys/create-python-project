@@ -18,6 +18,11 @@ Easily create a new Python project with simple commands:
 ```shell
 pipx run ansys-create-python-project -n my-project
 ```
+or
+
+```shell
+python -m ansys-create-python-project -n my-project
+```
 
 <h1 align="center">
   <a href=""><img src="./doc/images/pipx_create_project.gif" alt="Create Python Project"></a>
@@ -25,7 +30,7 @@ pipx run ansys-create-python-project -n my-project
 
 The new python project will be created according to the Ansys-recommended structure.
 
-For example, the command above will create a directory called `my-project` inside the current directory.<br>
+For example, the commands above will create a directory called `my-project` inside the current directory.<br>
 
 ## Prerequisites
 
@@ -87,7 +92,7 @@ No configuration or complicated folder structures required, only the files you n
 
 #### With pip
 
-If you do not want to install Pipx you can still use the package, but first you must install it with pip.
+If you do not want to install pipx you can still use the package, but first you must install it with pip.
 
 ```shell
 pip install ansys-create-python-project

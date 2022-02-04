@@ -3,10 +3,9 @@
 import os
 import pathlib
 import sys
-from .generator import ProjectGenerator, ProjectTemplate
 import argparse
-
-__version__ = '0.0.11'
+from .generator import ProjectGenerator, ProjectTemplate
+from ._version import __version__
 
 
 def cli(root_folder=None):

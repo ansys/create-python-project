@@ -1,5 +1,9 @@
 from setuptools import setup
 
+version = {}
+with open("./src/_version.py") as fp:
+    exec(fp.read(), version)
+
 CLASSIFIERS = [
     "Development Status :: 1 - Planning",
     "Intended Audience :: Developers",
@@ -8,7 +12,7 @@ CLASSIFIERS = [
 ]
 
 setup(name='ansys-create-python-project',
-      version='0.0.2dev',
+      version=version['__version__'],
       url='',
       author='ANSYS, Inc.',
       maintainer='Babacar Fall',

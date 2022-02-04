@@ -8,9 +8,17 @@ from .generator import ProjectGenerator, ProjectTemplate
 from ._version import __version__
 
 
-def cli(root_folder=None):
-    parser = create_parser()
+def parse_args(parser):
     args = parser.parse_args(sys.argv[1:])
+    if args.Name is None:
+        print('No project name supplied')
+        parser.print_help()
+        sys.exit()
+    return args
+
+
+def cli(root_folder=None):
+    args = parse_args(create_parser())
     if root_folder is None:
         root_folder = pathlib.Path.cwd()
     templates_directory = get_builtin_templates_path()
@@ -29,9 +37,15 @@ def get_builtin_templates_path():
 
 def create_parser():
     parser = argparse.ArgumentParser()
+    parser.add_argument("-n",
+                        "--Name",
+                        help="Set the project name. This is a required argument.")
+    parser.add_argument("-t",
+                        "--Template",
+                        help="Set the project template. Defaults to 'classic'.",
+                        default='classic',
+                        required=False)
     parser.add_argument('--version', action='version', version=f'ansys-create-python-project {__version__}')
-    parser.add_argument("-n", "--Name", help="Set the project name")
-    parser.add_argument("-t", "--Template", help="Set the project template", default='classic', required=False)
     return parser
 
 

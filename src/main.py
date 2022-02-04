@@ -3,10 +3,9 @@
 import os
 import pathlib
 import sys
-from .generator import ProjectGenerator, ProjectTemplate
 import argparse
-
-__version__ = '0.0.11'
+from .generator import ProjectGenerator, ProjectTemplate
+from ._version import __version__
 
 
 def parse_args(parser):
@@ -19,9 +18,6 @@ def parse_args(parser):
 
 
 def cli(root_folder=None):
-    if '--version' in sys.argv[1:]:
-        print(__version__)
-        return
     args = parse_args(create_parser())
     if root_folder is None:
         root_folder = pathlib.Path.cwd()
@@ -49,6 +45,7 @@ def create_parser():
                         help="Set the project template. Defaults to 'classic'.",
                         default='classic',
                         required=False)
+    parser.add_argument('--version', action='version', version=f'ansys-create-python-project {__version__}')
     return parser
 
 

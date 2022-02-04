@@ -1,6 +1,7 @@
 from src.generator import ProjectGenerator, ProjectTemplate, \
     copy_directory_and_contents_to_new_location, ProjectTemplateAndDestinationChecker
 from src.main import cli, create_parser, get_builtin_templates_path
+from src._version import __version__
 
 
 def create_x_many_templates(path, num):

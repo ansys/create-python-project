@@ -9,9 +9,6 @@ from ._version import __version__
 
 
 def cli(root_folder=None):
-    if '--version' in sys.argv[1:]:
-        print(__version__)
-        return
     parser = create_parser()
     args = parser.parse_args(sys.argv[1:])
     if root_folder is None:
@@ -34,6 +31,7 @@ def create_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument("-n", "--Name", help="Set the project name")
     parser.add_argument("-t", "--Template", help="Set the project template")
+    parser.add_argument('--version', action='version', version=f'ansys-create-python-project {__version__}')
     return parser
 
 

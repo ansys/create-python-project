@@ -10,7 +10,8 @@ class TestCLI:
     def test_version(self, flags):
         sys.argv = ['', '--version']
         sys.argv.extend(flags)
-        assert cli() is None
+        with pytest.raises(SystemExit):
+            cli()
 
     @pytest.mark.parametrize('template', ['classic', 'package', 'gRPC-api', 'rest-api'])
     def test_generate_projects(self, template, destination_directory):

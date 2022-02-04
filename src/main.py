@@ -10,6 +10,13 @@ from ._version import __version__
 
 def parse_args(parser):
     args = parser.parse_args(sys.argv[1:])
+    if args.templates is True:
+        path = get_builtin_templates_path()
+        available_templates = [p.name for p in path.iterdir() if p.name != 'shared']
+        print('Available templates are:')
+        for template in available_templates:
+            print(f' * {template}')
+        sys.exit()
     if args.Name is None:
         print('No project name supplied')
         parser.print_help()
@@ -45,7 +52,15 @@ def create_parser():
                         help="Set the project template. Defaults to 'classic'.",
                         default='classic',
                         required=False)
-    parser.add_argument('--version', action='version', version=f'ansys-create-python-project {__version__}')
+    parser.add_argument('--templates',
+                        help='View all the available project templates.',
+                        action='store_true',
+                        default=False,
+                        required=False)
+    parser.add_argument('--version',
+                        action='version',
+                        version=f'ansys-create-python-project {__version__}')
+
     return parser
 
 

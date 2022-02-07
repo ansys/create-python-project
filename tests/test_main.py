@@ -25,6 +25,17 @@ class TestCLI:
         sys.argv = ['', '--Name', 'my_proj', '--Template', template]
         cli(root_folder=destination_directory)
 
+    def test_no_name_exits(self):
+        sys.argv = ['', '--Template', 'classic']
+        with pytest.raises(SystemExit):
+            cli()
+
+    @pytest.mark.parametrize('flags', [[], ['--Name', 'thing'], ['--Template', 'classic']])
+    def test_templates_flag_exits(self, flags):
+        sys.argv = ['', '--templates'] + flags
+        with pytest.raises(SystemExit):
+            cli()
+
 
 class TestCreateParser:
     @pytest.mark.parametrize('flag', ['--Name', '-n'])

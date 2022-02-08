@@ -20,3 +20,4 @@ jobs:
           pip install -r requirements_doc.txt --disable-pip-version-check
           cd doc/
           make html
+          make html

@@ -18,7 +18,7 @@ jobs:
       - name: Build Documentation
         run: |
           pip install -r requirements_doc.txt --disable-pip-version-check
-          cd doc/build/html/
+          cd doc/
           make.bat html
 
       - name: Deploy

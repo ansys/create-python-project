@@ -21,9 +21,14 @@ coloredlogs.install(level='DEBUG')
 logger.setLevel(logging.INFO)
     
 
-def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path):
+def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path, just_files: bool = False):
     logger.debug(f'Attempting to copy {source} to {target}')
-    shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
+    if just_files:
+        for file in source.iterdir():
+            if not file.is_dir():
+                shutil.copy(file, target)
+    else:
+        shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
     
     
 def rename_files_in_directory(directory: pathlib.Path):
@@ -86,7 +91,16 @@ class ProjectGenerator:
         ProjectTemplateAndDestinationChecker(self.template, destination).check()
         copy_directory_and_contents_to_new_location(self.template.template_directory, destination)
         if self.template.shared_files_directory is not None:
-            copy_directory_and_contents_to_new_location(self.template.shared_files_directory, destination)
+            copy_directory_and_contents_to_new_location(self.template.shared_files_directory,
+                                                        destination,
+                                                        just_files=True)
+            if self.template.cicd_type == 'github':
+                cicd_target = destination / '.github' / 'workflows' / 'python-package.yml'
+                cicd_source = self.template.shared_files_directory / 'cicd' / 'python-package.yml'
+            else:
+                cicd_target = destination / 'azure-pipelines.yml'
+                cicd_source = self.template.shared_files_directory / 'cicd' / 'azure-pipelines.yml'
+            shutil.copy(cicd_source, cicd_target)
         rename_files_in_directory(destination)
 
         logger.info(emoji.emojize('Project created successfully :thumbs_up:  :clapping_hands:'))

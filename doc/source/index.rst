@@ -6,13 +6,11 @@
 Welcome to Create-Python-Project's documentation!
 =================================================
 
-<p align="center">
-  <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/v/ansys-create-python-project.svg"></a>
-  <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/status/ansys-create-python-project.svg"></a>
-  <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/pyversions/ansys-create-python-project.svg"></a>
-  <a href="CONTRIBUTING.md#pull-requests"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
-  <a href="#license"><img src="https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg?colorB=ff0000"></a>
-</p>
+.. image:: https://img.shields.io/pypi/v/ansys-create-python-project.svg
+.. image:: https://img.shields.io/pypi/status/ansys-create-python-project.svg
+.. image:: https://img.shields.io/pypi/pyversions/ansys-create-python-project.svg
+.. image:: https://img.shields.io/badge/PRs-welcome-brightgreen.svg
+.. image:: https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg
 
 Create-Python-Project is an open-source Python-based command line tool that
 generates pre-defined project structures in new directories. It is a tool

@@ -1,5 +1,7 @@
 
-
+<h1 align="center">
+  <a href=""><img src="https://raw.githubusercontent.com/pyansys/create-python-project/main/doc/images/create-python-project_transparent.png" alt="Create Python Project"></a>
+</h1>
 
 <p align="center">
   <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/v/ansys-create-python-project.svg"></a>
@@ -22,7 +24,9 @@ or
 python -m ansys-create-python-project -n my-project
 ```
 
-
+<h1 align="center">
+  <a href=""><img src="https://raw.githubusercontent.com/pyansys/create-python-project/main/doc/images/pipx_create_project.gif" alt="Create Python Project"></a>
+</h1>
 
 The new python project will be created according to the Ansys-recommended structure.
 

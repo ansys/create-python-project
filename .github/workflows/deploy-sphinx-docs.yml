@@ -21,7 +21,6 @@ jobs:
           pip install -r requirements_doc.txt
           cd doc/
           make html
-          make html
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4

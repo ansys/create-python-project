@@ -1,6 +1,6 @@
-name: Build Sphinx Documentation
+name: Deploy Sphinx Documentation
 
-on: [push]
+on: [release]
 
 jobs:
   doc_build:
@@ -20,3 +20,10 @@ jobs:
           pip install -r requirements_doc.txt --disable-pip-version-check
           cd doc/
           make html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@3.7.1
+        with:
+          BRANCH: gh-pages
+          FOLDER: doc/build/html
+          CLEAN: true

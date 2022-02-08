@@ -39,6 +39,7 @@ def rename_files_in_directory(directory: pathlib.Path):
 class ProjectTemplate:
     template_directory: pathlib.Path
     shared_files_directory: pathlib.Path
+    cicd_type: str = 'github'
 
 
 class ProjectTemplateAndDestinationChecker:

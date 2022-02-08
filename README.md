@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <a href=""><img src="./doc/images/create-python-project_transparent.png" alt="Create Python Project"></a>
+  <a href=""><img src="https://raw.githubusercontent.com/pyansys/create-python-project/main/doc/images/create-python-project_transparent.png" alt="Create Python Project"></a>
 </h1>
 
 <p align="center">
@@ -18,14 +18,19 @@ Easily create a new Python project with simple commands:
 ```shell
 pipx run ansys-create-python-project -n my-project
 ```
+or
+
+```shell
+python -m ansys-create-python-project -n my-project
+```
 
 <h1 align="center">
-  <a href=""><img src="./doc/images/pipx_create_project.gif" alt="Create Python Project"></a>
+  <a href=""><img src="https://raw.githubusercontent.com/pyansys/create-python-project/main/doc/images/pipx_create_project.gif" alt="Create Python Project"></a>
 </h1>
 
 The new python project will be created according to the Ansys-recommended structure.
 
-For example, the command above will create a directory called `my-project` inside the current directory.<br>
+For example, the commands above will create a directory called `my-project` inside the current directory.<br>
 
 ## Prerequisites
 
@@ -87,7 +92,7 @@ No configuration or complicated folder structures required, only the files you n
 
 #### With pip
 
-If you do not want to install Pipx you can still use the package, but first you must install it with pip.
+If you do not want to install pipx you can still use the package, but first you must install it with pip.
 
 ```shell
 pip install ansys-create-python-project
@@ -133,7 +138,7 @@ To run the tests run the following command:
 5. Optional: Run specific tests suites thanks to the powerful pytest search feature
 
 <h1 align="center">
-  <a href=""><img src="./doc/images/docker-compose-run-tests.gif" alt="Create Python Project"></a>
+  <a href=""><img src="https://raw.githubusercontent.com/pyansys/create-python-project/main/doc/images/docker-compose-run-tests.gif" alt="Create Python Project"></a>
 </h1>
 
 ### Push your new project to git repository

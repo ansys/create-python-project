@@ -1,0 +1,384 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Examples &#8212; ansys-create-python-project 0.0.2dev documentation</title>
+    
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Templates" href="templates.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><style>
+    .navbar-light {
+        background-color: black !important;
+    }
+</style>
+
+<div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">ansys-create-python-project</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" >
+      <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+    </span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="introduction.html">
+  Quick Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="templates.html">
+  Templates
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="requirements.html">
+  Requirements
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="license.html">
+  License
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#classic-template-default">
+   Classic template (default)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#view-available-templates">
+   View available templates
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#version-number">
+   Version number
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#creating-a-project-whilst-specifying-a-template">
+   Creating a project whilst specifying a template
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#viewing-the-help">
+   Viewing the help
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="examples">
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<p>Python projects can be created using this tool in two ways:
+via pip and with pipx.</p>
+<p>If you use pipx you don’t have to install the package itself,
+but you do have to install pipx. Whereas if you use pip you
+must install the package via pip (as normal) and run the package
+from there. Examples of both will be used in the examples but
+whilst the syntax may differ slightly between pip and pipx the
+functionality is the same.</p>
+<section id="classic-template-default">
+<h2>Classic template (default)<a class="headerlink" href="#classic-template-default" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">classic</span></code> template is the default in the tool, and will be used if no template is specified.</p>
+<p>The minimum you need to provide is the name of your project using either the <code class="docutils literal notranslate"><span class="pre">--Name</span></code> or <code class="docutils literal notranslate"><span class="pre">-n</span></code> flags.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="n">-n</span> <span class="n">my_project</span>
+<span class="n">12</span><span class="p">:</span><span class="n">57</span><span class="p">:</span><span class="n">50</span> <span class="no">[INFO]</span> <span class="n">Project</span> <span class="n">created</span> <span class="n">successfully</span>
+<span class="n">We</span> <span class="n">recommend</span> <span class="n">you</span> <span class="n">track</span> <span class="n">your</span> <span class="n">project</span> <span class="n">using</span> <span class="n">git</span>
+<span class="n">and</span> <span class="n">store</span> <span class="n">it</span> <span class="k">in</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">repository</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">on</span> <span class="n">ADO</span> <span class="n">or</span> <span class="n">GitHub</span><span class="p">.</span>
+<span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">by</span> <span class="n">following</span> <span class="n">these</span> <span class="n">instructions</span> <span class="n">provided</span> <span class="n">you</span> <span class="n">already</span> <span class="n">have</span> <span class="n">git</span> <span class="n">installed</span><span class="p">.</span>
+    <span class="n">1</span><span class="p">-</span> <span class="n">Navigate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">created</span> <span class="n">project</span> <span class="n">directory</span> <span class="n">on</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span>
+    <span class="n">2</span><span class="p">-</span> <span class="n">Make</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">into</span> <span class="n">a</span> <span class="n">git</span> <span class="n">repo</span> <span class="n">and</span> <span class="n">link</span> <span class="n">it</span> <span class="n">to</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">origin</span> <span class="p">(</span><span class="n">GitHub</span><span class="p">/</span><span class="n">ADO</span><span class="p">/</span><span class="n">etc</span><span class="p">.)</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">1</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">init</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">2</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">&lt;</span><span class="n">git_repository_url</span><span class="p">&gt;</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">3</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">add</span> <span class="p">.</span> <span class="p">&amp;&amp;</span> <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&quot;initial commit&quot;</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">4</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+
+
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">cd </span><span class="p">.\</span><span class="n">my_project</span><span class="p">\</span>
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="nb">ls</span>
+
+
+    <span class="n">Directory</span><span class="p">:</span> <span class="n">C</span><span class="p">:\</span><span class="n">my_project</span>
+
+
+<span class="n">Mode</span>                 <span class="n">LastWriteTime</span>         <span class="n">Length</span> <span class="n">Name</span>
+<span class="p">----</span>                 <span class="p">-------------</span>         <span class="p">------</span> <span class="p">----</span>
+<span class="n">d</span><span class="p">-----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>                <span class="n">doc</span>
+<span class="n">d</span><span class="p">-----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>                <span class="n">docker</span>
+<span class="n">d</span><span class="p">-----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>                <span class="n">examples</span>
+<span class="n">d</span><span class="p">-----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>                <span class="n">src</span>
+<span class="n">d</span><span class="p">-----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>                <span class="n">tests</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">281</span> <span class="p">.</span><span class="n">flake8</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">240</span> <span class="p">.</span><span class="n">gitattributes</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">998</span> <span class="p">.</span><span class="n">gitignore</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>             <span class="n">11</span> <span class="n">CHANGELOG</span><span class="p">.</span><span class="nb">md</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>           <span class="n">2750</span> <span class="n">CODE_OF_CONDUCT</span><span class="p">.</span><span class="nb">md</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>             <span class="n">41</span> <span class="n">conftest</span><span class="p">.</span><span class="n">py</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>           <span class="n">2879</span> <span class="n">CONTRIBUTING</span><span class="p">.</span><span class="nb">md</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>           <span class="n">1110</span> <span class="n">LICENSE</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">200</span> <span class="n">pytest</span><span class="p">.</span><span class="n">ini</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">110</span> <span class="n">README</span><span class="p">.</span><span class="nb">md</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>             <span class="n">35</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">389</span> <span class="n">setup</span><span class="p">.</span><span class="n">py</span>
+<span class="n">-a</span><span class="p">----</span>        <span class="n">04</span><span class="p">/</span><span class="n">02</span><span class="p">/</span><span class="n">2022</span>     <span class="n">17</span><span class="p">:</span><span class="n">49</span>            <span class="n">109</span> <span class="nb">test-requirements</span><span class="p">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</section>
+<section id="view-available-templates">
+<h2>View available templates<a class="headerlink" href="#view-available-templates" title="Permalink to this headline">¶</a></h2>
+<p>Create-Python-Package comes with several builtin templates, which can be viewed in detail on
+the <a class="reference internal" href="templates.html#templates"><span class="std std-ref">Templates</span></a>. page. If you want to view those available to you you can also use the
+<code class="docutils literal notranslate"><span class="pre">--templates</span></code> flag to interrogate the CLI.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="p">-</span><span class="n">-templates</span>
+<span class="n">Available</span> <span class="n">templates</span> <span class="n">are</span><span class="p">:</span>
+ <span class="p">*</span> <span class="n">classic</span>
+ <span class="p">*</span> <span class="n">gRPC-api</span>
+ <span class="p">*</span> <span class="n">package</span>
+ <span class="p">*</span> <span class="n">rest-api</span>
+</pre></div>
+</div>
+</section>
+<section id="version-number">
+<h2>Version number<a class="headerlink" href="#version-number" title="Permalink to this headline">¶</a></h2>
+<p>Similarly you can interrogate the version number of the version you’re using via the <code class="docutils literal notranslate"><span class="pre">--version</span></code> flag.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="p">-</span><span class="n">-version</span>
+<span class="n">ansys-create-python-project</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2dev</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-a-project-whilst-specifying-a-template">
+<h2>Creating a project whilst specifying a template<a class="headerlink" href="#creating-a-project-whilst-specifying-a-template" title="Permalink to this headline">¶</a></h2>
+<p>In order to specify a template you must use the <code class="docutils literal notranslate"><span class="pre">--Template</span></code> (or <code class="docutils literal notranslate"><span class="pre">-t</span></code>) flag.
+For example, to create a new package called “my_package”, you would need to execute the following command.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="n">-n</span> <span class="n">my_package</span> <span class="n">-t</span> <span class="n">package</span>
+<span class="n">11</span><span class="p">:</span><span class="n">56</span><span class="p">:</span><span class="n">59</span> <span class="no">[INFO]</span> <span class="n">Project</span> <span class="n">created</span> <span class="n">successfully</span>
+<span class="n">We</span> <span class="n">recommend</span> <span class="n">you</span> <span class="n">track</span> <span class="n">your</span> <span class="n">project</span> <span class="n">using</span> <span class="n">git</span>
+<span class="n">and</span> <span class="n">store</span> <span class="n">it</span> <span class="k">in</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">repository</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">on</span> <span class="n">ADO</span> <span class="n">or</span> <span class="n">GitHub</span><span class="p">.</span>
+<span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">by</span> <span class="n">following</span> <span class="n">these</span> <span class="n">instructions</span> <span class="n">provided</span> <span class="n">you</span> <span class="n">already</span> <span class="n">have</span> <span class="n">git</span> <span class="n">installed</span><span class="p">.</span>
+    <span class="n">1</span><span class="p">-</span> <span class="n">Navigate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">created</span> <span class="n">project</span> <span class="n">directory</span> <span class="n">on</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span>
+    <span class="n">2</span><span class="p">-</span> <span class="n">Make</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">into</span> <span class="n">a</span> <span class="n">git</span> <span class="n">repo</span> <span class="n">and</span> <span class="n">link</span> <span class="n">it</span> <span class="n">to</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">origin</span> <span class="p">(</span><span class="n">GitHub</span><span class="p">/</span><span class="n">ADO</span><span class="p">/</span><span class="n">etc</span><span class="p">.)</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">1</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">init</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">2</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">&lt;</span><span class="n">git_repository_url</span><span class="p">&gt;</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">3</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">add</span> <span class="p">.</span> <span class="p">&amp;&amp;</span> <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&quot;initial commit&quot;</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">4</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+
+
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="viewing-the-help">
+<h2>Viewing the help<a class="headerlink" href="#viewing-the-help" title="Permalink to this headline">¶</a></h2>
+<p>If you’re still having trouble understanding the command line, you can always view the help using the
+<code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> flags.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; python -m ansys-create-python-project -h
+usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n NAME, --Name NAME  Set the project name. This is a required argument.
+  -t TEMPLATE, --Template TEMPLATE
+                        Set the project template. Defaults to &#39;classic&#39;.
+  --templates           View all the available project templates.
+  --version             show program&#39;s version number and exit
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; python -m ansys-create-python-project --help
+usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -n NAME, --Name NAME  Set the project name. This is a required argument.
+  -t TEMPLATE, --Template TEMPLATE
+                        Set the project template. Defaults to &#39;classic&#39;.
+  --templates           View all the available project templates.
+  --version             show program&#39;s version number and exit
+</pre></div>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright Ansys 2022.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,410 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Quick Overview &#8212; ansys-create-python-project 0.0.2dev documentation</title>
+    
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Templates" href="templates.html" />
+    <link rel="prev" title="Welcome to Create-Python-Project’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><style>
+    .navbar-light {
+        background-color: black !important;
+    }
+</style>
+
+<div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">ansys-create-python-project</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" >
+      <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+    </span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Quick Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="templates.html">
+  Templates
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="examples.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="requirements.html">
+  Requirements
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="license.html">
+  License
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Quick Overview
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#usage">
+   Usage
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#create-new-project">
+     Create new project
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#with-pipx">
+       With pipx
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#with-pip">
+       With pip
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#specify-other-templates">
+       Specify other templates
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#run-tests-locally">
+     Run tests locally
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#push-your-new-project-to-git-repository">
+     Push your new project to git repository
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <h1 align="center">
+  <a href=""><img src="./doc/images/create-python-project_transparent.png" alt="Create Python Project"></a>
+</h1><p align="center">
+  <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/v/ansys-create-python-project.svg"></a>
+  <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/status/ansys-create-python-project.svg"></a>
+  <a href="https://pypi.org/project/ansys-create-python-project/"><img src="https://img.shields.io/pypi/pyversions/ansys-create-python-project.svg"></a>
+  <a href="CONTRIBUTING.md#pull-requests"><img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome"></a>
+  <a href="#license"><img src="https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg?colorB=ff0000"></a>
+</p><section id="quick-overview">
+<h1>Quick Overview<a class="headerlink" href="#quick-overview" title="Permalink to this headline">¶</a></h1>
+<p>Easily create a new Python project with simple commands:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project -n my-project
+</pre></div>
+</div>
+<h1 align="center">
+  <a href=""><img src="./doc/images/pipx_create_project.gif" alt="Create Python Project"></a>
+</h1><p>The new python project will be created according to the Ansys-recommended structure.</p>
+<p>For example, the command above will create a directory called <code class="docutils literal notranslate"><span class="pre">my-project</span></code> inside the current directory.<span class="raw-html-m2r"><br></span></p>
+</section>
+<section id="prerequisites">
+<h1>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Python 3.8+</p></li>
+<li><p>pip</p></li>
+<li><p>pipx (Optional but recommended)</p></li>
+</ul>
+<p>This tool is compatible with Windows OS and Linux distributions.</p>
+</section>
+<section id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<section id="create-new-project">
+<h2>Create new project<a class="headerlink" href="#create-new-project" title="Permalink to this headline">¶</a></h2>
+<section id="with-pipx">
+<h3>With pipx<a class="headerlink" href="#with-pipx" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project -n my-project
+</pre></div>
+</div>
+<p><a class="reference external" href="https://pypa.github.io/pipx/">pipx</a> is a package runner tool that that helps to run applications written in Python.
+In fact, it uses pip, but is focused on installing and managing Python packages that can be run from the command line
+directly as applications. pipx requires Python 3.6+ and can be installed by following
+<a class="reference external" href="https://pypa.github.io/pipx/installation/">these instructions</a>.</p>
+<p>It will create a directory called <code class="docutils literal notranslate"><span class="pre">my-project</span></code> inside the current folder.<span class="raw-html-m2r"><br></span>
+Inside that directory, it will generate the initial project structure and install
+the transitive dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>my-project
+├── README.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── flake8
+├── pytest.ini
+├── requirements.txt
+├── package.json
+├── CHANGELOG.md
+├── .gitignore
+├── .gitattributes
+├── docker
+│   ├── dockerfile
+│   └── docker-compose.yml
+├── doc
+│   ├── images
+│   |     └── img.jpeg
+│   └── README.md
+├── src
+│   └── app.py
+├── tests
+│    └── test_app.py
+└── examples
+    └── README.md
+</pre></div>
+</div>
+<p>No configuration or complicated folder structures required, only the files you need to build your app.<span class="raw-html-m2r"><br></span></p>
+</section>
+<section id="with-pip">
+<h3>With pip<a class="headerlink" href="#with-pip" title="Permalink to this headline">¶</a></h3>
+<p>If you do not want to install Pipx you can still use the package, but first you must install it with pip.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install ansys-create-python-project
+</pre></div>
+</div>
+<p>Then, you can run the package using Python’s <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span></code> functionality.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m ansys-create-python-project -n my-project
+</pre></div>
+</div>
+<p>If you aren’t sure what sort of arguments you need to supply you can always view the help through the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m ansys-create-python-project --help
+</pre></div>
+</div>
+</section>
+<section id="specify-other-templates">
+<h3>Specify other templates<a class="headerlink" href="#specify-other-templates" title="Permalink to this headline">¶</a></h3>
+<p>The default project template is ‘classic’. However, there are several other templates available.
+You can view the available templates by running the following command.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project --template
+</pre></div>
+</div>
+<p>You can easily specify other templates with the <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project -n my-project -t rest-api
+</pre></div>
+</div>
+</section>
+</section>
+<section id="run-tests-locally">
+<h2>Run tests locally<a class="headerlink" href="#run-tests-locally" title="Permalink to this headline">¶</a></h2>
+<p>The project newly created is done with a docker and a docker-compose files in the <code class="docutils literal notranslate"><span class="pre">/tests</span></code> folder. That enables to run
+all tests very easily in any environment without any additional requirements (only <a class="reference external" href="https://docs.docker.com/get-docker/">docker</a>
+and <a class="reference external" href="https://docs.docker.com/compose/install/">docker-compose</a> are required).</p>
+<p>To run the tests run the following command:</p>
+<ol class="arabic simple">
+<li><p>Move to /tests folder</p></li>
+<li><p>Build the docker image</p></li>
+<li><p>Start a container</p></li>
+<li><p>Run the tests</p></li>
+<li><p>Optional: Run specific tests suites thanks to the powerful pytest search feature</p></li>
+</ol>
+<h1 align="center">
+  <a href=""><img src="./doc/images/docker-compose-run-tests.gif" alt="Create Python Project"></a>
+</h1></section>
+<section id="push-your-new-project-to-git-repository">
+<h2>Push your new project to git repository<a class="headerlink" href="#push-your-new-project-to-git-repository" title="Permalink to this headline">¶</a></h2>
+<p>1- Go inside the created directory by running</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ./my-project
+</pre></div>
+</div>
+<p>2- Push this project in git remote repository”</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git init
+
+git remote add origin &lt;git_repository_url&gt;
+
+git add . <span class="o">&amp;&amp;</span> git commit -m <span class="se">\&quot;</span>initial commit<span class="se">\&quot;</span>
+
+git push origin main
+</pre></div>
+</div>
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright Ansys 2022.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

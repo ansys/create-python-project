@@ -21,9 +21,19 @@ coloredlogs.install(level='DEBUG')
 logger.setLevel(logging.INFO)
     
 
-def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path, just_files: bool = False):
+def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pathlib.Path, just_files: bool = False) -> None:
+    """Copies the source directory into the target directory.
+
+    Ignores the `__pycache__` folder.
+
+    :param source: an existing pathlib.Path to a directory
+    :param target: target pathlib.Path directory. Does not have to exist yet.
+    :param just_files: set True if only files should be copied to the new location.
+    :return:
+    """
     logger.debug(f'Attempting to copy {source} to {target}')
     if just_files:
+        logger.debug('Excluding directories from copy')
         for file in source.iterdir():
             if not file.is_dir():
                 shutil.copy(file, target)
@@ -31,7 +41,17 @@ def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pa
         shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
     
     
-def rename_files_in_directory(directory: pathlib.Path):
+def rename_files_in_directory(directory: pathlib.Path) -> None:
+    """Rename specific files in a directory.
+
+    This function will rename files as per the map in DOT_FILES_TO_RENAME.
+    'flake8' -> '.flake8',
+    'gitignore' -> '.gitignore',
+    'gitattributes' -> '.gitattributes'}
+
+    :param directory: pathlib.Path to the directory containing files to be renamed.
+    :return:
+    """
     logger.debug(f'Renaming files in {directory}')
     for file in os.listdir(directory):
         if file in DOT_FILES_TO_RENAME:
@@ -42,17 +62,39 @@ def rename_files_in_directory(directory: pathlib.Path):
 
 @dataclass
 class ProjectTemplate:
+    """Project template dataclass.
+
+    ProjectTemplate has 2 properties:
+    - `template_directory`
+        - The pathlib.Path to the directory containing the template to be used.
+    - `shared_files_directory`
+        - The pathlib.Path to the directory containing shared files common to all templates.
+    """
     template_directory: pathlib.Path
     shared_files_directory: pathlib.Path
     cicd_type: str = 'github'
 
 
 class ProjectTemplateAndDestinationChecker:
+    """Given a template and destination checks the validity of both."""
     def __init__(self, template: ProjectTemplate, destination: pathlib.Path):
+        """The template and destination must both be pathlib.Path objects.
+
+        :param template: pathlib.Path to the template directory
+        :param destination: pathlib.Path to the destination directory
+        """
         self.template = template
         self.destination = destination
 
-    def check_valid_template(self):
+    def check_valid_template(self) -> None:
+        """Checks the template is valid.
+
+        Specifically checks that the template is
+        - a directory
+        - not called "shared" because this reserved for the shared files directory
+
+        :return:
+        """
         logger.debug(f'Checking that {self.template.template_directory} is a valid template')
         if not self.template.template_directory.is_dir():
             logger.error(f"Template {self.template.template_directory} is not a directory")
@@ -63,19 +105,25 @@ class ProjectTemplateAndDestinationChecker:
             raise ValueError('template must not be called \'shared\'')
         logger.debug('confirmed')
 
-    def check_valid_shared_directory(self):
+    def check_valid_shared_directory(self) -> None:
+        """Checks that the supplied shared directory is a directory.
+
+        :return:
+        """
         logger.debug(f'Checking that {self.template.shared_files_directory} is a real directory')
         if not self.template.shared_files_directory.is_dir():
             logger.error(f"Template {self.template.shared_files_directory} is not a directory")
             raise NotADirectoryError('"shared" directory not a directory')
         logger.debug('confirmed')
 
-    def check(self):
+    def check(self) -> None:
+        """Performs all checks and raises errors when they fail."""
         self.check_valid_template()
         self.check_valid_shared_directory()
         self.check_destination_empty()
 
-    def check_destination_empty(self):
+    def check_destination_empty(self) -> None:
+        """Checks that the destination directory exists and is empty."""
         logger.debug(f'Checking that {self.destination} is currently empty')
         if self.destination.is_dir() and [d for d in self.destination.iterdir()]:
             error = f"Populated directory already exists at path {self.destination}"
@@ -84,10 +132,16 @@ class ProjectTemplateAndDestinationChecker:
 
 
 class ProjectGenerator:
+    """Creates the project based on the supplied template."""
     def __init__(self, template: ProjectTemplate):
         self.template = template
 
-    def generate_template_at_destination(self, destination: pathlib.Path):
+    def generate_template_at_destination(self, destination: pathlib.Path) -> None:
+        """Creates the project at the supplied destination.
+
+        :param destination: pathlib.Path to the empty destination directory.
+        :return:
+        """
         ProjectTemplateAndDestinationChecker(self.template, destination).check()
         copy_directory_and_contents_to_new_location(self.template.template_directory, destination)
         if self.template.shared_files_directory is not None:

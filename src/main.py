@@ -8,7 +8,12 @@ from .generator import ProjectGenerator, ProjectTemplate
 from ._version import __version__
 
 
-def parse_args(parser):
+def parse_args(parser: argparse.ArgumentParser) -> argparse.Namespace:
+    """Parse command line arguments and flag up issues with them.
+
+    :param parser: argparse.ArgumentParser object
+    :return: arguments namespace
+    """
     args = parser.parse_args(sys.argv[1:])
     if args.templates is True:
         path = get_builtin_templates_path()
@@ -24,7 +29,18 @@ def parse_args(parser):
     return args
 
 
-def cli(root_folder=None):
+def cli(root_folder: pathlib.Path = None) -> None:
+    """Command Line Interface function.
+
+    Constructs the CLI and executes the program itself.
+    The root folder is the one in which the project
+    should be created. This defaults to the current working
+    directory but can be set to be something else. This
+    functionality exists primarily for testing purposes.
+
+    :param root_folder: Directory in which to create the project directory
+    :return: None
+    """
     args = parse_args(create_parser())
     if root_folder is None:
         root_folder = pathlib.Path.cwd()
@@ -38,11 +54,21 @@ def cli(root_folder=None):
     return
 
 
-def get_builtin_templates_path():
+def get_builtin_templates_path() -> pathlib.Path:
+    """Return the pathlib.Path to the package's builtin templates
+
+    :return: template pathlib.Path
+    """
     return pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
 
 
-def create_parser():
+def create_parser() -> argparse.ArgumentParser:
+    """Construct the parser for the CLI.
+
+    Adds arguments to the parser but does not parse the arguments itself.
+
+    :return: argparse.ArgumentParser instance
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("-n",
                         "--Name",

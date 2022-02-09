@@ -160,5 +160,3 @@ git push origin main
 
 ```
 
-## Contributing
-

@@ -1,0 +1,30 @@
+name: Deploy Sphinx Documentation
+
+on: [push]
+
+jobs:
+  doc_build:
+    name: Build Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Build Documentation
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements_doc.txt
+          cd doc/
+          make html
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          BRANCH: gh-pages
+          FOLDER: doc/build/html
+          CLEAN: true

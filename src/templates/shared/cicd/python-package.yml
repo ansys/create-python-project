@@ -6,8 +6,10 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
+
     steps:
       - uses: actions/checkout@v2
+
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v2
         with:
@@ -21,10 +23,7 @@ jobs:
 
       - name: Lint with flake8
         run: |
-          # Run flake8 from file and show stats
-          flake8 . --count --show-source --statistics
-          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          flake8 .
 
       - name: Test with pytest
         run: |

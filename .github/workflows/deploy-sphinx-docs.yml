@@ -1,6 +1,9 @@
 name: Deploy Sphinx Documentation
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   doc_build:

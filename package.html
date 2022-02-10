@@ -261,7 +261,7 @@ the auto-generated documentation here!</p>
 
 <dl class="py class">
 <dt class="sig sig-object py" id="src.generator.ProjectTemplate">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">ProjectTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_files_directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplate" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">ProjectTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_files_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cicd_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'github'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Project template dataclass.</p>
 <p>ProjectTemplate has 2 properties:</p>
@@ -375,7 +375,7 @@ using the <cite>check()</cite> method.</p>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="src.generator.copy_directory_and_contents_to_new_location">
-<span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">copy_directory_and_contents_to_new_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.copy_directory_and_contents_to_new_location" title="Permalink to this definition">¶</a></dt>
+<span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">copy_directory_and_contents_to_new_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">just_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.copy_directory_and_contents_to_new_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies the source directory into the target directory.</p>
 <p>Ignores the <cite>__pycache__</cite> folder.</p>
 <dl class="field-list simple">
@@ -383,12 +383,14 @@ using the <cite>check()</cite> method.</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>source</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – an existing pathlib.Path to a directory</p></li>
 <li><p><strong>target</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – target pathlib.Path directory. Does not have to exist yet.</p></li>
+<li><p><strong>just_files</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – set True if only files should be copied to the new location.</p></li>
 </ul>
 </dd>
-</dl>
-<dl class="field-list simple">
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
 </dd>
 </dl>
 </dd></dl>

@@ -39,7 +39,6 @@ def cli(root_folder: pathlib.Path = None) -> None:
     functionality exists primarily for testing purposes.
 
     :param root_folder: Directory in which to create the project directory
-    :return: None
     """
     args = parse_args(create_parser())
     if root_folder is None:

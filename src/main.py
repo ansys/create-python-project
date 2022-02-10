@@ -50,7 +50,7 @@ def cli(root_folder: pathlib.Path = None) -> None:
     template = templates_directory / args.Template
     shared = templates_directory / 'shared'
 
-    project_generator = ProjectGenerator(ProjectTemplate(template, shared))
+    project_generator = ProjectGenerator(ProjectTemplate(template, shared, args.cicd.lower()))
     project_generator.generate_template_at_destination(root_folder / args.Name)
     return
 
@@ -91,6 +91,10 @@ def create_parser() -> argparse.ArgumentParser:
     parser.add_argument('--version',
                         action='version',
                         version=f'ansys-create-python-project {__version__}')
+    parser.add_argument('--cicd',
+                        help="Github Actions (github) or Azure Pipelines (ado)?",
+                        default='github',
+                        required=False)
 
     return parser
 

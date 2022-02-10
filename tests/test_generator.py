@@ -23,13 +23,28 @@ class TestCopyDirectory:
                                                     target=destination_directory)
         assert len([i for i in destination_directory.iterdir()]) > 0
 
+    def test_just_copy_files(self, destination_directory, dummy_templates_path):
+        name = f'my_new_template{datetime.datetime.now().microsecond}'
+        create_one_template(dummy_templates_path, name)
+        copy_directory_and_contents_to_new_location(source=dummy_templates_path / name,
+                                                    target=destination_directory,
+                                                    just_files=True)
+        assert len([f for f in destination_directory.iterdir()]) == 3
+
 
 class TestProjectTemplate:
-    def test_constructs_correctly(self, dummy_templates_path):
+    def test_constructs_correctly_with_default(self, dummy_templates_path):
         pt = ProjectTemplate(dummy_templates_path / 'my_template', dummy_templates_path / 'shared')
         assert pt.template_directory is not None
         assert pt.shared_files_directory is not None
+        assert pt.cicd_type is not None
 
+    def test_constructs_with_cicd(self, dummy_templates_path):
+        pt = ProjectTemplate(dummy_templates_path / 'my_template', dummy_templates_path / 'shared', 'azure')
+        assert pt.template_directory is not None
+        assert pt.shared_files_directory is not None
+        assert pt.cicd_type is not None
+        
 
 class TestGenerateProjectFolder:
     @pytest.mark.parametrize('name', ['classic', 'gRPC-api', 'package', 'rest-api'])

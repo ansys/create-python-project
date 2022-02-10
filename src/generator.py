@@ -7,7 +7,7 @@ import emoji
 import coloredlogs
 import logging
 from dataclasses import dataclass
-from .constants import Colors, DOT_FILES_TO_RENAME, GIT_RECC_LOG
+from .constants import DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
 
 os.environ['COLOREDLOGS_LOG_FORMAT'] = '%(asctime)s [%(levelname)s] %(message)s'
@@ -28,7 +28,6 @@ def copy_directory_and_contents_to_new_location(source: pathlib.Path, target: pa
 
     :param source: an existing pathlib.Path to a directory
     :param target: target pathlib.Path directory. Does not have to exist yet.
-    :return:
     """
     logger.debug(f'Attempting to copy {source} to {target}')
     shutil.copytree(source, target, dirs_exist_ok=True, ignore=shutil.ignore_patterns("__pycache__"))
@@ -38,12 +37,12 @@ def rename_files_in_directory(directory: pathlib.Path) -> None:
     """Rename specific files in a directory.
 
     This function will rename files as per the map in DOT_FILES_TO_RENAME.
-    'flake8' -> '.flake8',
-    'gitignore' -> '.gitignore',
-    'gitattributes' -> '.gitattributes'}
+
+    * 'flake8' -> '.flake8',
+    * 'gitignore' -> '.gitignore',
+    * 'gitattributes' -> '.gitattributes'}
 
     :param directory: pathlib.Path to the directory containing files to be renamed.
-    :return:
     """
     logger.debug(f'Renaming files in {directory}')
     for file in os.listdir(directory):
@@ -58,23 +57,31 @@ class ProjectTemplate:
     """Project template dataclass.
 
     ProjectTemplate has 2 properties:
-    - `template_directory`
+
+    * `template_directory`
         - The pathlib.Path to the directory containing the template to be used.
-    - `shared_files_directory`
+    * `shared_files_directory`
         - The pathlib.Path to the directory containing shared files common to all templates.
+
     """
     template_directory: pathlib.Path
     shared_files_directory: pathlib.Path
 
 
 class ProjectTemplateAndDestinationChecker:
-    """Given a template and destination checks the validity of both."""
-    def __init__(self, template: ProjectTemplate, destination: pathlib.Path):
-        """The template and destination must both be pathlib.Path objects.
+    """Provides capability to check validity of a
+    supplied template and destination.
 
-        :param template: pathlib.Path to the template directory
-        :param destination: pathlib.Path to the destination directory
-        """
+    Given a template and destination, this class provides
+    the power to check the validity of both. Once initialised,
+    the checks can be applied at a granular level or all at once
+    using the `check()` method.
+
+    :param template: pathlib.Path to the template directory
+    :param destination: pathlib.Path to the destination directory
+    """
+    def __init__(self, template: ProjectTemplate, destination: pathlib.Path):
+        """The template and destination must both be pathlib.Path objects."""
         self.template = template
         self.destination = destination
 
@@ -82,10 +89,9 @@ class ProjectTemplateAndDestinationChecker:
         """Checks the template is valid.
 
         Specifically checks that the template is
+
         - a directory
         - not called "shared" because this reserved for the shared files directory
-
-        :return:
         """
         logger.debug(f'Checking that {self.template.template_directory} is a valid template')
         if not self.template.template_directory.is_dir():
@@ -98,10 +104,7 @@ class ProjectTemplateAndDestinationChecker:
         logger.debug('confirmed')
 
     def check_valid_shared_directory(self) -> None:
-        """Checks that the supplied shared directory is a directory.
-
-        :return:
-        """
+        """Checks that the supplied shared directory is a directory."""
         logger.debug(f'Checking that {self.template.shared_files_directory} is a real directory')
         if not self.template.shared_files_directory.is_dir():
             logger.error(f"Template {self.template.shared_files_directory} is not a directory")
@@ -124,7 +127,10 @@ class ProjectTemplateAndDestinationChecker:
 
 
 class ProjectGenerator:
-    """Creates the project based on the supplied template."""
+    """Object that can create a project based on the supplied template.
+
+    :param template: Template to generate the project from.
+    """
     def __init__(self, template: ProjectTemplate):
         self.template = template
 
@@ -132,7 +138,6 @@ class ProjectGenerator:
         """Creates the project at the supplied destination.
 
         :param destination: pathlib.Path to the empty destination directory.
-        :return:
         """
         ProjectTemplateAndDestinationChecker(self.template, destination).check()
         copy_directory_and_contents_to_new_location(self.template.template_directory, destination)

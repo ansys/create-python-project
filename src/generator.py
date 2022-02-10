@@ -181,13 +181,13 @@ class ProjectGenerator:
             if self.template.cicd_type == 'github':
                 cicd_target = destination / '.github' / 'workflows'
                 file_name = 'python-package.yml'
-                cicd_source = self.template.shared_files_directory /
-                'cicd' / 'python-package.yml'
+                cicd_source = self.template.shared_files_directory \
+                              / 'cicd' / 'python-package.yml'
             else:
                 cicd_target = destination
                 file_name = 'azure-pipelines.yml'
-                cicd_source = self.template.shared_files_directory / 
-                'cicd' / 'azure-pipelines.yml'
+                cicd_source = self.template.shared_files_directory \
+                              / 'cicd' / 'azure-pipelines.yml'
             os.makedirs(cicd_target)
             shutil.copy(cicd_source, cicd_target / file_name)
         rename_files_in_directory(destination)

@@ -1,4 +1,5 @@
-# Copyright (c) 2022 Ansys, Inc. and its affiliates. Unauthorised use, distribution or duplication is prohibited
+# Copyright (c) 2022 Ansys, Inc. and its affiliates.
+# Unauthorised use, distribution or duplication is prohibited
 # LICENSE file is in the root directory of this source tree.
 import os
 import pathlib
@@ -17,7 +18,8 @@ def parse_args(parser: argparse.ArgumentParser) -> argparse.Namespace:
     args = parser.parse_args(sys.argv[1:])
     if args.templates is True:
         path = get_builtin_templates_path()
-        available_templates = [p.name for p in path.iterdir() if p.name != 'shared']
+        available_templates = [p.name
+                               for p in path.iterdir() if p.name != 'shared']
         print('Available templates are:')
         for template in available_templates:
             print(f' * {template}')
@@ -59,7 +61,9 @@ def get_builtin_templates_path() -> pathlib.Path:
 
     :return: template pathlib.Path
     """
-    return pathlib.Path(os.path.dirname(os.path.realpath(__file__))) / 'templates'
+    return pathlib.Path(
+        os.path.dirname(os.path.realpath(__file__))
+    ) / 'templates'
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -72,10 +76,12 @@ def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser()
     parser.add_argument("-n",
                         "--Name",
-                        help="Set the project name. This is a required argument.")
+                        help="Set the project name. "
+                             "This is a required argument.")
     parser.add_argument("-t",
                         "--Template",
-                        help="Set the project template. Defaults to 'classic'.",
+                        help="Set the project template. "
+                             "Defaults to 'classic'.",
                         default='classic',
                         required=False)
     parser.add_argument('--templates',

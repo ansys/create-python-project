@@ -1,3 +1,5 @@
 sphinx
 sphinx_mdinclude
 pyansys-sphinx-theme
+numpydoc
+sphinx_autodoc_typehints

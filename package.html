@@ -1,0 +1,522 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Module Documentation &#8212; ansys-create-python-project 0.0.4dev documentation</title>
+    
+    
+  <link href="_static/css/theme.css" rel="stylesheet">
+  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Examples" href="examples.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+    
+    <nav class="navbar navbar-light navbar-expand-lg bg-light fixed-top bd-navbar" id="navbar-main"><style>
+    .navbar-light {
+        background-color: black !important;
+    }
+</style>
+
+<div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+<a class="navbar-brand" href="index.html">
+<p class="title">ansys-create-python-project</p>
+</a>
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" >
+      <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+    </span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+    <li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="introduction.html">
+  Quick Overview
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="templates.html">
+  Templates
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="examples.html">
+  Examples
+ </a>
+</li>
+
+<li class="toctree-l1 current active nav-item">
+ <a class="current reference internal nav-link" href="#">
+  Module Documentation
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="contributing.html">
+  Contributing
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="requirements.html">
+  Requirements
+ </a>
+</li>
+
+<li class="toctree-l1 nav-item">
+ <a class="reference internal nav-link" href="license.html">
+  License
+ </a>
+</li>
+
+    
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+        <li class="nav-item">
+          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub">
+            <span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label>
+          </a>
+        </li>
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    
+    
+
+
+    <div class="container-xl">
+      <div class="row">
+          
+            
+            <!-- Only show if we have sidebars configured, else just a small margin  -->
+            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <div class="bd-toc-item active">
+    
+  </div>
+</nav>
+            </div>
+            
+          
+
+          
+          <div class="d-none d-xl-block col-xl-2 bd-toc">
+            
+              
+              <div class="toc-item">
+                
+<div class="tocsection onthispage pt-5 pb-3">
+    <i class="fas fa-list"></i> On this page
+</div>
+
+<nav id="bd-toc-nav">
+    <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generator-py">
+   generator.py
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#main-py">
+   main.py
+  </a>
+ </li>
+</ul>
+
+</nav>
+              </div>
+              
+              <div class="toc-item">
+                
+              </div>
+              
+            
+          </div>
+          
+
+          
+          
+            
+          
+          <main class="col-12 col-md-9 col-xl-7 py-md-5 pl-md-5 pr-md-4 bd-content" role="main">
+              
+              <div>
+                
+  <section id="module-documentation">
+<h1>Module Documentation<a class="headerlink" href="#module-documentation" title="Permalink to this headline">¶</a></h1>
+<p>Create-Python-Project is a command-line tool so it shouldn’t normally be imported.
+However, it is MIT-licensed and if you wish to develop using it you can view
+the auto-generated documentation here!</p>
+<p>The package contains two primary modules: <code class="docutils literal notranslate"><span class="pre">main.py</span></code> and <code class="docutils literal notranslate"><span class="pre">generator.py</span></code>.</p>
+<section id="generator-py">
+<h2>generator.py<a class="headerlink" href="#generator-py" title="Permalink to this headline">¶</a></h2>
+<p>This contains most of the package’s logic and covers template generation.</p>
+<span class="target" id="module-src.generator"></span><dl class="py class">
+<dt class="sig sig-object py" id="src.generator.ProjectGenerator">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">ProjectGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Object that can create a project based on the supplied template.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>template</strong> (<a class="reference internal" href="#src.generator.ProjectTemplate" title="src.generator.ProjectTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectTemplate</span></code></a>) – Template to generate the project from.</p>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.generator.ProjectGenerator.generate_template_at_destination" title="src.generator.ProjectGenerator.generate_template_at_destination"><code class="xref py py-obj docutils literal notranslate"><span class="pre">generate_template_at_destination</span></code></a>(destination)</p></td>
+<td><p>Creates the project at the supplied destination.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.generator.ProjectGenerator.generate_template_at_destination">
+<span class="sig-name descname"><span class="pre">generate_template_at_destination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectGenerator.generate_template_at_destination" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the project at the supplied destination.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>destination</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – pathlib.Path to the empty destination directory.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.generator.ProjectTemplate">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">ProjectTemplate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template_directory</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">shared_files_directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Project template dataclass.</p>
+<p>ProjectTemplate has 2 properties:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><cite>template_directory</cite></dt><dd><ul>
+<li><p>The pathlib.Path to the directory containing the template to be used.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><cite>shared_files_directory</cite></dt><dd><ul>
+<li><p>The pathlib.Path to the directory containing shared files common to all templates.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="src.generator.ProjectTemplateAndDestinationChecker">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">ProjectTemplateAndDestinationChecker</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">template</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplateAndDestinationChecker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides capability to check validity of a
+supplied template and destination.</p>
+<p>Given a template and destination, this class provides
+the power to check the validity of both. Once initialised,
+the checks can be applied at a granular level or all at once
+using the <cite>check()</cite> method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>template</strong> (<a class="reference internal" href="#src.generator.ProjectTemplate" title="src.generator.ProjectTemplate"><code class="xref py py-class docutils literal notranslate"><span class="pre">ProjectTemplate</span></code></a>) – pathlib.Path to the template directory</p></li>
+<li><p><strong>destination</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – pathlib.Path to the destination directory</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<table class="longtable table autosummary">
+<colgroup>
+<col style="width: 10%" />
+<col style="width: 90%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.generator.ProjectTemplateAndDestinationChecker.check" title="src.generator.ProjectTemplateAndDestinationChecker.check"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check</span></code></a>()</p></td>
+<td><p>Performs all checks and raises errors when they fail.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.generator.ProjectTemplateAndDestinationChecker.check_destination_empty" title="src.generator.ProjectTemplateAndDestinationChecker.check_destination_empty"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_destination_empty</span></code></a>()</p></td>
+<td><p>Checks that the destination directory exists and is empty.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#src.generator.ProjectTemplateAndDestinationChecker.check_valid_shared_directory" title="src.generator.ProjectTemplateAndDestinationChecker.check_valid_shared_directory"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_valid_shared_directory</span></code></a>()</p></td>
+<td><p>Checks that the supplied shared directory is a directory.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#src.generator.ProjectTemplateAndDestinationChecker.check_valid_template" title="src.generator.ProjectTemplateAndDestinationChecker.check_valid_template"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_valid_template</span></code></a>()</p></td>
+<td><p>Checks the template is valid.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="src.generator.ProjectTemplateAndDestinationChecker.check">
+<span class="sig-name descname"><span class="pre">check</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplateAndDestinationChecker.check" title="Permalink to this definition">¶</a></dt>
+<dd><p>Performs all checks and raises errors when they fail.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.generator.ProjectTemplateAndDestinationChecker.check_destination_empty">
+<span class="sig-name descname"><span class="pre">check_destination_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplateAndDestinationChecker.check_destination_empty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that the destination directory exists and is empty.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.generator.ProjectTemplateAndDestinationChecker.check_valid_shared_directory">
+<span class="sig-name descname"><span class="pre">check_valid_shared_directory</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplateAndDestinationChecker.check_valid_shared_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks that the supplied shared directory is a directory.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="src.generator.ProjectTemplateAndDestinationChecker.check_valid_template">
+<span class="sig-name descname"><span class="pre">check_valid_template</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectTemplateAndDestinationChecker.check_valid_template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks the template is valid.</p>
+<p>Specifically checks that the template is</p>
+<ul class="simple">
+<li><p>a directory</p></li>
+<li><p>not called “shared” because this reserved for the shared files directory</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.generator.copy_directory_and_contents_to_new_location">
+<span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">copy_directory_and_contents_to_new_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.copy_directory_and_contents_to_new_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies the source directory into the target directory.</p>
+<p>Ignores the <cite>__pycache__</cite> folder.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – an existing pathlib.Path to a directory</p></li>
+<li><p><strong>target</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – target pathlib.Path directory. Does not have to exist yet.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.generator.rename_files_in_directory">
+<span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">rename_files_in_directory</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">directory</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.rename_files_in_directory" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rename specific files in a directory.</p>
+<p>This function will rename files as per the map in DOT_FILES_TO_RENAME.</p>
+<ul class="simple">
+<li><p>‘flake8’ -&gt; ‘.flake8’,</p></li>
+<li><p>‘gitignore’ -&gt; ‘.gitignore’,</p></li>
+<li><p>‘gitattributes’ -&gt; ‘.gitattributes’}</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>directory</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – pathlib.Path to the directory containing files to be renamed.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="main-py">
+<h2>main.py<a class="headerlink" href="#main-py" title="Permalink to this headline">¶</a></h2>
+<p>This contains the command-line interface logic as well as being the place
+the program is actually run.</p>
+<span class="target" id="module-src.main"></span><dl class="py function">
+<dt class="sig sig-object py" id="src.main.cli">
+<span class="sig-prename descclassname"><span class="pre">src.main.</span></span><span class="sig-name descname"><span class="pre">cli</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_folder</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.main.cli" title="Permalink to this definition">¶</a></dt>
+<dd><p>Command Line Interface function.</p>
+<p>Constructs the CLI and executes the program itself.
+The root folder is the one in which the project
+should be created. This defaults to the current working
+directory but can be set to be something else. This
+functionality exists primarily for testing purposes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>root_folder</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>]) – Directory in which to create the project directory</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.main.create_parser">
+<span class="sig-prename descclassname"><span class="pre">src.main.</span></span><span class="sig-name descname"><span class="pre">create_parser</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.main.create_parser" title="Permalink to this definition">¶</a></dt>
+<dd><p>Construct the parser for the CLI.</p>
+<p>Adds arguments to the parser but does not parse the arguments itself.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">ArgumentParser</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>argparse.ArgumentParser instance</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.main.get_builtin_templates_path">
+<span class="sig-prename descclassname"><span class="pre">src.main.</span></span><span class="sig-name descname"><span class="pre">get_builtin_templates_path</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#src.main.get_builtin_templates_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the pathlib.Path to the package’s builtin templates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code></p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>template pathlib.Path</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="src.main.parse_args">
+<span class="sig-prename descclassname"><span class="pre">src.main.</span></span><span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parser</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.main.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parse command line arguments and flag up issues with them.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>parser</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">ArgumentParser</span></code>) – argparse.ArgumentParser object</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Namespace</span></code></p>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>arguments namespace</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+              </div>
+              
+              
+          </main>
+          
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+<footer class="footer mt-5 mt-md-0">
+  <div class="container">
+    
+    <div class="footer-item">
+      <p class="copyright">
+    &copy; Copyright Ansys 2022.<br>
+</p>
+    </div>
+    
+    <div class="footer-item">
+      <p class="sphinx-version">
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+</p>
+    </div>
+    
+  </div>
+</footer>
+  </body>
+</html>

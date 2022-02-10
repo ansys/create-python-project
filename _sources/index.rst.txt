@@ -23,6 +23,7 @@ designed to be used by beginners and experienced developers alike.
    introduction
    templates
    examples
+   package
    contributing
    requirements
    license

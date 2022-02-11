@@ -273,9 +273,11 @@ the auto-generated documentation here!</p>
 </dd>
 </dl>
 </li>
+</ul>
+<ul class="simple">
 <li><dl class="simple">
 <dt><cite>shared_files_directory</cite></dt><dd><ul>
-<li><p>The pathlib.Path to the directory containing shared files common to all templates.</p></li>
+<li><p>The pathlib.Path to the directory with shared files across templates.</p></li>
 </ul>
 </dd>
 </dl>
@@ -362,7 +364,7 @@ using the <cite>check()</cite> method.</p>
 <p>Specifically checks that the template is</p>
 <ul class="simple">
 <li><p>a directory</p></li>
-<li><p>not called “shared” because this reserved for the shared files directory</p></li>
+<li><p>not called “shared” as this is reserved for the shared files folder</p></li>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
@@ -407,7 +409,7 @@ using the <cite>check()</cite> method.</p>
 </ul>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>directory</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – pathlib.Path to the directory containing files to be renamed.</p>
+<dd class="field-odd"><p><strong>directory</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>) – pathlib.Path to the directory of files to be renamed.</p>
 </dd>
 </dl>
 <dl class="field-list simple">

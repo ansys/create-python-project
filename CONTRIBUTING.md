@@ -10,4 +10,4 @@ support user questions and develop new features to make this software
 a useful tool for all users.  As such, we welcome and encourage any
 questions or submissions to this repository.
 
-Please reference [Contributing](https://mapdldocs.pyansys.com/contributing.html) for the full documentation regarding contributing to the PyMAPDL project.
+Please reference [Contributing](https://pyansys.github.io/create-python-project/contributing.html) for the full documentation regarding contributing to the Create-Python-Project project.

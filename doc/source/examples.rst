@@ -116,6 +116,33 @@ For example, to create a new package called "my_package", you would need to exec
 
     PS C:\>
 
+CI/CD Options
+-------------
+
+By default, Create-Python-Project copies GitHub workflows to to your created project.
+However, it is trivial to instruct it to copy azure devops workflows instead, by including
+the flag and option: ``--cicd ado``. We only offer workflows for GitHub and ADO at the moment
+but may add more in the future.
+
+.. code-block:: powershell
+
+    PS C:\> python -m ansys-create-python-project -n MyAzureProject -t gRPC-api --cicd ado
+    10:36:04 [INFO] Project created successfully 
+    We recommend you track your project using git
+    and store it in a remote repository, such as on ADO or GitHub.
+    This can be done by following these instructions provided you already have git installed.
+        1- Navigate to the created project directory on the command line
+        2- Make the directory into a git repo and link it to a remote origin (GitHub/ADO/etc.)
+            2.1 [Optional] -  git init
+            2.2 [Optional] -  git remote add origin <git_repository_url>
+            2.3 [Optional] -  git add . && git commit -m "initial commit"
+            2.4 [Optional] -  git push origin main
+
+
+    PS C:\>
+
+
+
 Viewing the help
 ----------------
 
@@ -124,23 +151,8 @@ If you're still having trouble understanding the command line, you can always vi
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project -h
-    usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version]
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      -n NAME, --Name NAME  Set the project name. This is a required argument.
-      -t TEMPLATE, --Template TEMPLATE
-                            Set the project template. Defaults to 'classic'.
-      --templates           View all the available project templates.
-      --version             show program's version number and exit
-
-or
-
-.. code-block:: powershell
-
     PS C:\> python -m ansys-create-python-project --help
-    usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version]
+    usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version] [--cicd CICD]
 
     optional arguments:
       -h, --help            show this help message and exit
@@ -149,4 +161,5 @@ or
                             Set the project template. Defaults to 'classic'.
       --templates           View all the available project templates.
       --version             show program's version number and exit
-
+      --cicd CICD           Github Actions (github) or Azure Pipelines (ado)?
+    PS C:\>

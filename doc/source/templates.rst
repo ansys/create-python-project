@@ -6,18 +6,8 @@ Templates
 In General
 ----------
 
-shared
-______
+The details of which templates are currently available (and the files included) are shown below.
+This list is generated from the templates available in the latest release.
 
-classic
--------
-
-rest-api
---------
-
-package
--------
-
-gRPC-api
---------
+.. mdinclude :: ./templates_.md
 

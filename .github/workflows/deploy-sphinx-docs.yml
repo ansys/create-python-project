@@ -20,7 +20,7 @@ jobs:
 
       - name: Build Templates Page
         run: |
-          python generate_templates_docs.py
+          python ./doc/source/generate_templates_docs.py
 
       - name: Build Documentation
         run: |

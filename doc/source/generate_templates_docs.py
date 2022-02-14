@@ -15,9 +15,9 @@ def parse_directory_into_string(directory: pathlib.Path, indent=1):
     return '\n'.join(strings)
 
 
-project_dir = pathlib.Path(os.path.dirname(__file__))
-templates = project_dir / 'src' / 'templates'
-templates_md = project_dir / 'doc' / 'source' / 'templates_.md'
+source_dir = pathlib.Path(os.path.dirname(__file__))
+templates = source_dir.parent.parent / 'src' / 'templates'
+templates_md = source_dir / 'templates_.md'
 
 sections = []
 for t in templates.iterdir():

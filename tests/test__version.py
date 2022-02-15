@@ -1,6 +1,4 @@
-import pytest
-
-from common import __version__
+from .common import __version__
 
 
 class TestVersion:

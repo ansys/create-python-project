@@ -202,6 +202,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ci-cd-options">
+   CI/CD Options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#viewing-the-help">
    Viewing the help
   </a>
@@ -328,25 +333,35 @@ For example, to create a new package called “my_package”, you would need to 
 </pre></div>
 </div>
 </section>
+<section id="ci-cd-options">
+<h2>CI/CD Options<a class="headerlink" href="#ci-cd-options" title="Permalink to this headline">¶</a></h2>
+<p>By default, Create-Python-Project copies GitHub workflows to to your created project.
+However, it is trivial to instruct it to copy azure devops workflows instead, by including
+the flag and option: <code class="docutils literal notranslate"><span class="pre">--cicd</span> <span class="pre">ado</span></code>. We only offer workflows for GitHub and ADO at the moment
+but may add more in the future.</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="n">-n</span> <span class="n">MyAzureProject</span> <span class="n">-t</span> <span class="n">gRPC-api</span> <span class="p">-</span><span class="n">-cicd</span> <span class="n">ado</span>
+<span class="n">10</span><span class="p">:</span><span class="n">36</span><span class="p">:</span><span class="n">04</span> <span class="no">[INFO]</span> <span class="n">Project</span> <span class="n">created</span> <span class="n">successfully</span>
+<span class="n">We</span> <span class="n">recommend</span> <span class="n">you</span> <span class="n">track</span> <span class="n">your</span> <span class="n">project</span> <span class="n">using</span> <span class="n">git</span>
+<span class="n">and</span> <span class="n">store</span> <span class="n">it</span> <span class="k">in</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">repository</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">on</span> <span class="n">ADO</span> <span class="n">or</span> <span class="n">GitHub</span><span class="p">.</span>
+<span class="n">This</span> <span class="n">can</span> <span class="n">be</span> <span class="n">done</span> <span class="n">by</span> <span class="n">following</span> <span class="n">these</span> <span class="n">instructions</span> <span class="n">provided</span> <span class="n">you</span> <span class="n">already</span> <span class="n">have</span> <span class="n">git</span> <span class="n">installed</span><span class="p">.</span>
+    <span class="n">1</span><span class="p">-</span> <span class="n">Navigate</span> <span class="n">to</span> <span class="n">the</span> <span class="n">created</span> <span class="n">project</span> <span class="n">directory</span> <span class="n">on</span> <span class="n">the</span> <span class="n">command</span> <span class="n">line</span>
+    <span class="n">2</span><span class="p">-</span> <span class="n">Make</span> <span class="n">the</span> <span class="n">directory</span> <span class="n">into</span> <span class="n">a</span> <span class="n">git</span> <span class="n">repo</span> <span class="n">and</span> <span class="n">link</span> <span class="n">it</span> <span class="n">to</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">origin</span> <span class="p">(</span><span class="n">GitHub</span><span class="p">/</span><span class="n">ADO</span><span class="p">/</span><span class="n">etc</span><span class="p">.)</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">1</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">init</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">2</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">origin</span> <span class="p">&lt;</span><span class="n">git_repository_url</span><span class="p">&gt;</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">3</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">add</span> <span class="p">.</span> <span class="p">&amp;&amp;</span> <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">&quot;initial commit&quot;</span>
+        <span class="n">2</span><span class="p">.</span><span class="n">4</span> <span class="no">[Optional]</span> <span class="p">-</span>  <span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">main</span>
+
+
+<span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span>
+</pre></div>
+</div>
+</section>
 <section id="viewing-the-help">
 <h2>Viewing the help<a class="headerlink" href="#viewing-the-help" title="Permalink to this headline">¶</a></h2>
 <p>If you’re still having trouble understanding the command line, you can always view the help using the
 <code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> flags.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; python -m ansys-create-python-project -h
-usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version]
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -n NAME, --Name NAME  Set the project name. This is a required argument.
-  -t TEMPLATE, --Template TEMPLATE
-                        Set the project template. Defaults to &#39;classic&#39;.
-  --templates           View all the available project templates.
-  --version             show program&#39;s version number and exit
-</pre></div>
-</div>
-<p>or</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; python -m ansys-create-python-project --help
-usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version]
+usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version] [--cicd CICD]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -355,6 +370,8 @@ optional arguments:
                         Set the project template. Defaults to &#39;classic&#39;.
   --templates           View all the available project templates.
   --version             show program&#39;s version number and exit
+  --cicd CICD           Github Actions (github) or Azure Pipelines (ado)?
+PS C:\&gt;
 </pre></div>
 </div>
 </section>

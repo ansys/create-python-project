@@ -8,6 +8,7 @@ import emoji
 import coloredlogs
 import logging
 from dataclasses import dataclass
+from string import Template
 from .constants import DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
 
@@ -196,3 +197,21 @@ class ProjectGenerator:
                                   ':clapping_hands:'))
 
         print(GIT_RECC_LOG)
+
+    def setup_documentation(self, destination: pathlib.Path) -> None:
+        project_name = destination.name
+        docs_dir = self.template.shared_files_directory / 'sphinxdoc'
+        copy_directory_and_contents_to_new_location(docs_dir,
+                                                    destination / 'doc')
+        files_with_name = [destination / 'doc' / 'source' / 'conf.py',
+                           destination / 'doc' / 'source' / 'index.rst',
+                           destination / 'README.md']
+
+        for file in files_with_name:
+            with open(file, 'r') as f:
+                string = f.read()
+            template = Template(string)
+            result = template.substitute({'project_name': project_name})
+            with open(file, 'w') as f:
+                f.write(result)
+

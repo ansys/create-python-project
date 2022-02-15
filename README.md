@@ -32,6 +32,8 @@ The new python project will be created according to the Ansys-recommended struct
 
 For example, the commands above will create a directory called `my-project` inside the current directory.<br>
 
+View the full documentation [here](https://pyansys.github.io/create-python-project/index.html).
+
 ## Prerequisites
 
 - Python 3.8+

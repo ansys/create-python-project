@@ -15,6 +15,10 @@ jobs:
         with:
           python-version: 3.9
 
+      - name: Build Templates Page
+        run: |
+          python ./doc/source/generate_templates_docs.py
+
       - name: Build Documentation
         run: |
           pip install -r requirements_doc.txt --disable-pip-version-check

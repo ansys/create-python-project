@@ -5,7 +5,6 @@
 |   ╰-- app.py
 ╰-- models/
 |   |   ╰-- __init__.py
-╰-- main.py
 ╰-- static/
 |   |   ╰-- swagger.json
 ╰-- __init__.py
@@ -15,7 +14,6 @@
 ╰-- version.py
 ╰-- tests/
 |   ╰-- Dockerfile
-╰-- test_main.py
 ╰-- docker-compose.yaml
 ╰-- conftest.py
 ╰-- test_server.py

@@ -1,0 +1,43 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "api",
+    "version": "1.0.0",
+    "title": "Your API Name",
+    "contact": {
+      "email": ""
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "description": "Returns the health status of the api!",
+        "responses": {
+          "200": {
+            "description": "Returns the health status",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/version": {
+      "get": {
+        "description": "Returns the version of the api!",
+        "responses": {
+          "200": {
+            "description": "Returns the version",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

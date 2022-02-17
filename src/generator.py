@@ -188,7 +188,7 @@ class ProjectGenerator:
                 file_name = 'azure-pipelines.yml'
                 cicd_source = self.template.shared_files_directory \
                               / 'cicd' / 'azure-pipelines.yml'
-            os.makedirs(cicd_target)
+            os.makedirs(cicd_target, exist_ok=True)
             shutil.copy(cicd_source, cicd_target / file_name)
         rename_files_in_directory(destination)
 

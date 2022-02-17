@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  web-api:
+    container_name: my-flask-api
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "5000:5000"
+    volumes:
+      - ../:/app

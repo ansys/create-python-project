@@ -8,6 +8,8 @@ import emoji
 import coloredlogs
 import logging
 from dataclasses import dataclass
+from string import Template
+from typing import List
 from .constants import DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
 
@@ -34,7 +36,6 @@ def copy_directory_and_contents_to_new_location(source: pathlib.Path,
     :param source: an existing pathlib.Path to a directory
     :param target: target pathlib.Path directory. Does not have to exist yet.
     :param just_files: set True if only files should be copied to the new location.
-    :return:
     """
     logger.debug(f'Attempting to copy {source} to {target}')
     if just_files:
@@ -46,7 +47,27 @@ def copy_directory_and_contents_to_new_location(source: pathlib.Path,
         shutil.copytree(source,
                         target, dirs_exist_ok=True, 
                         ignore=shutil.ignore_patterns("__pycache__"))
-    
+
+
+def add_project_name_to_files(files_with_template: List[pathlib.Path],
+                              project_name: str):
+    """Replaces all $project_name with project_name in all supplied files.
+
+    Template-replacing function. Opens each file in turn and swaps all
+    instances in the text of ``$project_name`` with the value of the
+    parameter ``project_name``.
+
+    :param files_with_template: List of files to be edited
+    :param project_name: Name of the project to be inserted
+    """
+    for file in files_with_template:
+        with open(file, 'r') as f:
+            string = f.read()
+        template = Template(string)
+        result = template.substitute({'project_name': project_name})
+        with open(file, 'w') as f:
+            f.write(result)
+
     
 def rename_files_in_directory(directory: pathlib.Path) -> None:
     """Rename specific files in a directory.
@@ -196,3 +217,15 @@ class ProjectGenerator:
                                   ':clapping_hands:'))
 
         print(GIT_RECC_LOG)
+
+    def setup_documentation(self, destination: pathlib.Path) -> None:
+        project_name = destination.name
+        docs_dir = self.template.shared_files_directory / 'sphinxdoc'
+        copy_directory_and_contents_to_new_location(docs_dir,
+                                                    destination / 'doc')
+        files_with_project_name = [
+            destination / 'doc' / 'source' / 'conf.py',
+            destination / 'doc' / 'source' / 'index.rst',
+            destination / 'README.md'
+        ]
+        add_project_name_to_files(files_with_project_name, project_name)

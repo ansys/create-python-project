@@ -231,6 +231,7 @@
 |   ╰-- app.py
 ╰-- models/
 |   |   ╰-- __init__.py
+╰-- _version.py
 ╰-- static/
 |   |   ╰-- swagger.json
 ╰-- __init__.py
@@ -242,6 +243,7 @@
 |   ╰-- Dockerfile
 ╰-- docker-compose.yaml
 ╰-- conftest.py
+╰-- __init__.py
 ╰-- test_server.py
 ╰-- doc/
 |   ╰-- images/
@@ -263,14 +265,13 @@
 ╰-- gitignore
 ╰-- flake8
 ╰-- setup.py
+╰-- requirements_test.txt
 ╰-- CODE_OF_CONDUCT.md
-╰-- test-requirements.txt
 ╰-- pytest.ini
 ╰-- cicd/
 |   ╰-- python-package.yml
 ╰-- azure-pipelines.yml
 ╰-- CONTRIBUTING.md
-╰-- conftest.py
 ╰-- README.md
 ╰-- CHANGELOG.md
 </pre></div>
@@ -279,9 +280,13 @@
 <section id="package">
 <h1>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- src/
-|   ╰-- main.py
+|   ╰-- _version.py
+╰-- main.py
+╰-- __init__.py
 ╰-- tests/
 |   ╰-- test_main.py
+╰-- conftest.py
+╰-- __init__.py
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
@@ -295,9 +300,13 @@
 <section id="grpc-api">
 <h1>gRPC-api<a class="headerlink" href="#grpc-api" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- src/
-|   ╰-- main.py
+|   ╰-- _version.py
+╰-- main.py
+╰-- __init__.py
 ╰-- tests/
 |   ╰-- test_main.py
+╰-- conftest.py
+╰-- __init__.py
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
@@ -311,12 +320,15 @@
 <section id="classic">
 <h1>classic<a class="headerlink" href="#classic" title="Permalink to this headline">¶</a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- src/
-|   ╰-- main.py
+|   ╰-- _version.py
+╰-- main.py
 ╰-- __init__.py
 ╰-- tests/
 |   ╰-- Dockerfile
 ╰-- test_main.py
 ╰-- docker-compose.yaml
+╰-- conftest.py
+╰-- __init__.py
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- placeholder-image.png

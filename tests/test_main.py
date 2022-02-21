@@ -1,4 +1,4 @@
-from common import cli, create_parser, get_builtin_templates_path
+from .common import cli, create_parser, get_builtin_templates_path
 import pytest
 import sys
 import pathlib

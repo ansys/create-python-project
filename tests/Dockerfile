@@ -8,7 +8,7 @@ COPY ../README.md ./README.md
 
 RUN pip install --upgrade pip
 RUN pip install -e .
-RUN pip3 install -r /pytest_project/test-requirements.txt
+RUN pip3 install -r /pytest_project/requirements_test.txt
 
 WORKDIR /pytest_project/
 

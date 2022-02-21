@@ -36,7 +36,6 @@ release = __version__
 extensions = ["sphinx_mdinclude",
               "sphinx.ext.autodoc",
               "numpydoc",
-              "sphinx.ext.autodoc",
               "sphinx.ext.autosummary",
               "sphinx_autodoc_typehints"
               ]

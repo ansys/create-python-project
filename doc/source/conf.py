@@ -12,13 +12,16 @@
 #
 import os
 import sys
+from datetime import datetime
+from pyansys_sphinx_theme import __version__ as pyansys_version
+from pyansys_sphinx_theme import pyansys_logo_black
 sys.path.insert(0, os.path.abspath('../../'))
 from src._version import __version__
 
 # -- Project information -----------------------------------------------------
 
 project = 'ansys-create-python-project'
-copyright = 'Ansys 2022'
+copyright = f"(c) {datetime.now().year} ANSYS, Inc. All rights reserved"
 author = 'Babacar Fall'
 
 # The full version, including alpha/beta/rc tags
@@ -33,7 +36,6 @@ release = __version__
 extensions = ["sphinx_mdinclude",
               "sphinx.ext.autodoc",
               "numpydoc",
-              "sphinx.ext.autodoc",
               "sphinx.ext.autosummary",
               "sphinx_autodoc_typehints"
               ]
@@ -52,6 +54,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
+html_logo = pyansys_logo_black
 html_theme = 'pyansys_sphinx_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,

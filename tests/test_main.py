@@ -1,4 +1,4 @@
-from common import cli, create_parser, get_builtin_templates_path, \
+from .common import cli, create_parser, get_builtin_templates_path, \
     add_project_name_to_files
 import pytest
 import sys

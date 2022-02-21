@@ -39,6 +39,7 @@
 ╰-- requirements.txt
 ╰-- gitignore
 ╰-- flake8
+╰-- requirements_doc.txt
 ╰-- setup.py
 ╰-- requirements_test.txt
 ╰-- CODE_OF_CONDUCT.md
@@ -47,6 +48,14 @@
 |   ╰-- python-package.yml
 ╰-- azure-pipelines.yml
 ╰-- CONTRIBUTING.md
+╰-- sphinxdoc/
+|   ╰-- source/
+|   |   ╰-- conf.py
+╰-- index.rst
+╰-- package.rst
+╰-- license.rst
+╰-- code_of_conduct.rst
+╰-- Makefile
 ╰-- README.md
 ╰-- CHANGELOG.md
 ```

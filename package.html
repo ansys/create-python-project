@@ -243,6 +243,17 @@ the auto-generated documentation here!</p>
 </tr>
 </tbody>
 </table>
+<table class="table">
+<colgroup>
+<col style="width: 70%" />
+<col style="width: 30%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>setup_documentation</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <dl class="py method">
 <dt class="sig sig-object py" id="src.generator.ProjectGenerator.generate_template_at_destination">
 <span class="sig-name descname"><span class="pre">generate_template_at_destination</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.ProjectGenerator.generate_template_at_destination" title="Permalink to this definition">¶</a></dt>
@@ -378,6 +389,23 @@ using the <cite>check()</cite> method.</p>
 </dd></dl>
 
 <dl class="py function">
+<dt class="sig sig-object py" id="src.generator.add_project_name_to_files">
+<span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">add_project_name_to_files</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files_with_template</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">project_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.add_project_name_to_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replaces all $project_name with project_name in all supplied files.</p>
+<p>Template-replacing function. Opens each file in turn and swaps all
+instances in the text of <code class="docutils literal notranslate"><span class="pre">$project_name</span></code> with the value of the
+parameter <code class="docutils literal notranslate"><span class="pre">project_name</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>files_with_template</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">List</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Path</span></code>]) – List of files to be edited</p></li>
+<li><p><strong>project_name</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">str</span></code>) – Name of the project to be inserted</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt class="sig sig-object py" id="src.generator.copy_directory_and_contents_to_new_location">
 <span class="sig-prename descclassname"><span class="pre">src.generator.</span></span><span class="sig-name descname"><span class="pre">copy_directory_and_contents_to_new_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">source</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">just_files</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#src.generator.copy_directory_and_contents_to_new_location" title="Permalink to this definition">¶</a></dt>
 <dd><p>Copies the source directory into the target directory.</p>
@@ -390,11 +418,10 @@ using the <cite>check()</cite> method.</p>
 <li><p><strong>just_files</strong> (<code class="xref py py-class docutils literal notranslate"><span class="pre">bool</span></code>) – set True if only files should be copied to the new location.</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p></p>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code></p>
 </dd>
 </dl>
 </dd></dl>

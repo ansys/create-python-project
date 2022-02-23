@@ -52,6 +52,7 @@ def cli(root_folder: pathlib.Path = None) -> None:
 
     project_generator = ProjectGenerator(ProjectTemplate(template, shared, args.cicd.lower()))
     project_generator.generate_template_at_destination(root_folder / args.Name)
+    project_generator.setup_documentation(root_folder / args.Name)
     return
 
 

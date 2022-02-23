@@ -1,7 +1,5 @@
 import pytest
-import pathlib
-import os
-from common import create_text_file_in_directory, \
+from .common import create_text_file_in_directory, \
     ProjectTemplate, get_builtin_templates_path, ProjectTemplateAndDestinationChecker
 
 

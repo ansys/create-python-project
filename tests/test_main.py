@@ -1,4 +1,5 @@
-from common import cli, create_parser, get_builtin_templates_path
+from .common import cli, create_parser, get_builtin_templates_path, \
+    add_project_name_to_files
 import pytest
 import sys
 import pathlib
@@ -57,3 +58,20 @@ class TestGetTemplatesPath:
         expected_templates_directory = tests_directory.parent / 'src' / 'templates'
         actual_templates_directory = get_builtin_templates_path()
         assert actual_templates_directory == expected_templates_directory
+
+
+class TestApplyTemplate:
+    @pytest.mark.parametrize('proj_name', ['new', 'new2', '2new', '22',
+                                           'new-2', 'new two', ' new '])
+    def test_project_name_rename(self, proj_name, tmp_path):
+        s = '$project_name'
+        test_files = [tmp_path / f'test.{suffix}'
+                      for suffix in ['.py', '.txt', '.md']]
+        for test_file in test_files:
+            with open(test_file, 'w') as f:
+                f.write(s)
+        add_project_name_to_files(test_files, proj_name)
+        for test_file in test_files:
+            with open(test_file, 'r') as f:
+                s = f.read()
+            assert proj_name in s

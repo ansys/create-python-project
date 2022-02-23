@@ -1,6 +1,5 @@
 import pathlib
-
-from common import create_one_template, ProjectGenerator, \
+from .common import create_one_template, ProjectGenerator, \
     copy_directory_and_contents_to_new_location, ProjectTemplate, \
     get_builtin_templates_path
 import pytest

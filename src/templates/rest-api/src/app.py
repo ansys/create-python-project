@@ -25,7 +25,7 @@ SWAGGER_UI_BLUEPRINT = get_swaggerui_blueprint(
 def create_app():
     """Initialize the core application"""
     app = Flask(__name__)
-    cors = CORS(app)
+    CORS(app, resources=r'/api/*')
     app.config['CORS_HEADERS'] = 'Content-Type'
     app.register_blueprint(version_endpoint)
     app.register_blueprint(health_endpoint)
@@ -41,7 +41,6 @@ def serve(app, address, port, middleware=None):
 
     logging.info('Server flask starting')
     app.run(host=address, port=port)
-    i=1
 
 
 if __name__ == '__main__':

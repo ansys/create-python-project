@@ -246,7 +246,7 @@ functionality is the same.</p>
 <h2>Classic template (default)<a class="headerlink" href="#classic-template-default" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">classic</span></code> template is the default in the tool, and will be used if no template is specified.</p>
 <p>The minimum you need to provide is the name of your project using either the <code class="docutils literal notranslate"><span class="pre">--Name</span></code> or <code class="docutils literal notranslate"><span class="pre">-n</span></code> flags.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="n">-n</span> <span class="n">my_project</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">acpp</span> <span class="n">-n</span> <span class="n">my_project</span>
 <span class="n">12</span><span class="p">:</span><span class="n">57</span><span class="p">:</span><span class="n">50</span> <span class="no">[INFO]</span> <span class="n">Project</span> <span class="n">created</span> <span class="n">successfully</span>
 <span class="n">We</span> <span class="n">recommend</span> <span class="n">you</span> <span class="n">track</span> <span class="n">your</span> <span class="n">project</span> <span class="n">using</span> <span class="n">git</span>
 <span class="n">and</span> <span class="n">store</span> <span class="n">it</span> <span class="k">in</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">repository</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">on</span> <span class="n">ADO</span> <span class="n">or</span> <span class="n">GitHub</span><span class="p">.</span>
@@ -295,7 +295,7 @@ functionality is the same.</p>
 <p>Create-Python-Package comes with several builtin templates, which can be viewed in detail on
 the <a class="reference internal" href="templates.html#templates"><span class="std std-ref">Templates</span></a>. page. If you want to view those available to you you can also use the
 <code class="docutils literal notranslate"><span class="pre">--templates</span></code> flag to interrogate the CLI.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="p">-</span><span class="n">-templates</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">acpp</span> <span class="p">-</span><span class="n">-templates</span>
 <span class="n">Available</span> <span class="n">templates</span> <span class="n">are</span><span class="p">:</span>
  <span class="p">*</span> <span class="n">classic</span>
  <span class="p">*</span> <span class="n">gRPC-api</span>
@@ -307,7 +307,7 @@ the <a class="reference internal" href="templates.html#templates"><span class="s
 <section id="version-number">
 <h2>Version number<a class="headerlink" href="#version-number" title="Permalink to this headline">¶</a></h2>
 <p>Similarly you can interrogate the version number of the version you’re using via the <code class="docutils literal notranslate"><span class="pre">--version</span></code> flag.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="p">-</span><span class="n">-version</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">acpp</span> <span class="p">-</span><span class="n">-version</span>
 <span class="n">ansys-create-python-project</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2dev</span>
 </pre></div>
 </div>
@@ -316,7 +316,7 @@ the <a class="reference internal" href="templates.html#templates"><span class="s
 <h2>Creating a project whilst specifying a template<a class="headerlink" href="#creating-a-project-whilst-specifying-a-template" title="Permalink to this headline">¶</a></h2>
 <p>In order to specify a template you must use the <code class="docutils literal notranslate"><span class="pre">--Template</span></code> (or <code class="docutils literal notranslate"><span class="pre">-t</span></code>) flag.
 For example, to create a new package called “my_package”, you would need to execute the following command.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="n">-n</span> <span class="n">my_package</span> <span class="n">-t</span> <span class="n">package</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">acpp</span> <span class="n">-n</span> <span class="n">my_package</span> <span class="n">-t</span> <span class="n">package</span>
 <span class="n">11</span><span class="p">:</span><span class="n">56</span><span class="p">:</span><span class="n">59</span> <span class="no">[INFO]</span> <span class="n">Project</span> <span class="n">created</span> <span class="n">successfully</span>
 <span class="n">We</span> <span class="n">recommend</span> <span class="n">you</span> <span class="n">track</span> <span class="n">your</span> <span class="n">project</span> <span class="n">using</span> <span class="n">git</span>
 <span class="n">and</span> <span class="n">store</span> <span class="n">it</span> <span class="k">in</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">repository</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">on</span> <span class="n">ADO</span> <span class="n">or</span> <span class="n">GitHub</span><span class="p">.</span>
@@ -339,7 +339,7 @@ For example, to create a new package called “my_package”, you would need to 
 However, it is trivial to instruct it to copy azure devops workflows instead, by including
 the flag and option: <code class="docutils literal notranslate"><span class="pre">--cicd</span> <span class="pre">ado</span></code>. We only offer workflows for GitHub and ADO at the moment
 but may add more in the future.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">ansys-create-python-project</span> <span class="n">-n</span> <span class="n">MyAzureProject</span> <span class="n">-t</span> <span class="n">gRPC-api</span> <span class="p">-</span><span class="n">-cicd</span> <span class="n">ado</span>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">acpp</span> <span class="n">-n</span> <span class="n">MyAzureProject</span> <span class="n">-t</span> <span class="n">gRPC-api</span> <span class="p">-</span><span class="n">-cicd</span> <span class="n">ado</span>
 <span class="n">10</span><span class="p">:</span><span class="n">36</span><span class="p">:</span><span class="n">04</span> <span class="no">[INFO]</span> <span class="n">Project</span> <span class="n">created</span> <span class="n">successfully</span>
 <span class="n">We</span> <span class="n">recommend</span> <span class="n">you</span> <span class="n">track</span> <span class="n">your</span> <span class="n">project</span> <span class="n">using</span> <span class="n">git</span>
 <span class="n">and</span> <span class="n">store</span> <span class="n">it</span> <span class="k">in</span> <span class="n">a</span> <span class="n">remote</span> <span class="n">repository</span><span class="p">,</span> <span class="n">such</span> <span class="n">as</span> <span class="n">on</span> <span class="n">ADO</span> <span class="n">or</span> <span class="n">GitHub</span><span class="p">.</span>
@@ -360,7 +360,7 @@ but may add more in the future.</p>
 <h2>Viewing the help<a class="headerlink" href="#viewing-the-help" title="Permalink to this headline">¶</a></h2>
 <p>If you’re still having trouble understanding the command line, you can always view the help using the
 <code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> flags.</p>
-<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; python -m ansys-create-python-project --help
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; python -m acpp --help
 usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version] [--cicd CICD]
 
 optional arguments:

@@ -22,7 +22,7 @@ The minimum you need to provide is the name of your project using either the ``-
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project -n my_project
+    PS C:\> python -m acpp -n my_project
     12:57:50 [INFO] Project created successfully
     We recommend you track your project using git
     and store it in a remote repository, such as on ADO or GitHub.
@@ -74,7 +74,7 @@ the :ref:`Templates`. page. If you want to view those available to you you can a
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project --templates
+    PS C:\> python -m acpp --templates
     Available templates are:
      * classic
      * gRPC-api
@@ -89,7 +89,7 @@ Similarly you can interrogate the version number of the version you're using via
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project --version
+    PS C:\> python -m acpp --version
     ansys-create-python-project 0.0.2dev
 
 
@@ -101,7 +101,7 @@ For example, to create a new package called "my_package", you would need to exec
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project -n my_package -t package
+    PS C:\> python -m acpp -n my_package -t package
     11:56:59 [INFO] Project created successfully
     We recommend you track your project using git
     and store it in a remote repository, such as on ADO or GitHub.
@@ -126,7 +126,7 @@ but may add more in the future.
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project -n MyAzureProject -t gRPC-api --cicd ado
+    PS C:\> python -m acpp -n MyAzureProject -t gRPC-api --cicd ado
     10:36:04 [INFO] Project created successfully 
     We recommend you track your project using git
     and store it in a remote repository, such as on ADO or GitHub.
@@ -151,7 +151,7 @@ If you're still having trouble understanding the command line, you can always vi
 
 .. code-block:: powershell
 
-    PS C:\> python -m ansys-create-python-project --help
+    PS C:\> python -m acpp --help
     usage: __main__.py [-h] [-n NAME] [-t TEMPLATE] [--templates] [--version] [--cicd CICD]
 
     optional arguments:

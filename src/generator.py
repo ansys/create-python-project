@@ -7,6 +7,7 @@ import shutil
 import emoji
 import coloredlogs
 import logging
+import warnings
 from dataclasses import dataclass
 from .constants import DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
@@ -137,6 +138,7 @@ class ProjectTemplateAndDestinationChecker:
 
     def check(self) -> None:
         """Performs all checks and raises errors when they fail."""
+        self.warn_if_using_development_template()
         self.check_valid_template()
         self.check_valid_shared_directory()
         self.check_destination_empty()
@@ -150,6 +152,14 @@ class ProjectTemplateAndDestinationChecker:
                     f"{self.destination}"
             logger.error(error)
             raise FileExistsError(error)
+
+    def warn_if_using_development_template(self):
+        development_templates = ['gRPC-api']
+
+        if self.template.template_directory.name in development_templates:
+            warnings.warn(f'{self.template.template_directory.name} is '
+                          f'currently in development and may not be fully '
+                          f'functional or otherwise unfinished.')
 
 
 class ProjectGenerator:

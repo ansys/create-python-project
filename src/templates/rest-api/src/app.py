@@ -49,7 +49,7 @@ if __name__ == '__main__':
     logging.info('server.py main : parsing arguments')
     parser = argparse.ArgumentParser()
     parser.add_argument("--address",
-                        help="Set server address",  )
+                        help="Set server address")
     parser.add_argument("-v", "--port", type=int,
                         help="Set server port", default=5000)
     args = parser.parse_args()

@@ -65,7 +65,12 @@ def add_project_name_to_files(files_with_template: List[pathlib.Path],
         with open(file, 'r') as f:
             string = f.read()
         template = Template(string)
-        result = template.substitute({'project_name': project_name})
+        if file.name == 'setup.py':
+            result = template.substitute(
+                {'project_name': project_name.replace('-', '_')}
+            )
+        else:
+            result = template.substitute({'project_name': project_name})
         with open(file, 'w') as f:
             f.write(result)
 
@@ -236,6 +241,7 @@ class ProjectGenerator:
         files_with_project_name = [
             destination / 'doc' / 'source' / 'conf.py',
             destination / 'doc' / 'source' / 'index.rst',
-            destination / 'README.md'
+            destination / 'README.md',
+            destination / 'setup.py'
         ]
         add_project_name_to_files(files_with_project_name, project_name)

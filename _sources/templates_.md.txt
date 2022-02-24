@@ -1,6 +1,7 @@
 ## rest-api
 
 ```
+╰-- requirements.txt
 ╰-- src/
 |   ╰-- app.py
 ╰-- models/

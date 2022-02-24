@@ -39,6 +39,8 @@ def copy_directory_and_contents_to_new_location(source: pathlib.Path,
     :param just_files: set True if only files should be copied to the new location.
     """
     logger.debug(f'Attempting to copy {source} to {target}')
+    if not target.is_dir():
+        os.makedirs(target, exist_ok=True)
     if just_files:
         logger.debug('Excluding directories from copy')
         for file in source.iterdir():
@@ -204,10 +206,7 @@ class ProjectGenerator:
         """
         ProjectTemplateAndDestinationChecker(self.template,
                                              destination).check()
-        copy_directory_and_contents_to_new_location(
-            self.template.template_directory,
-            destination
-        )
+
         if self.template.shared_files_directory is not None:
             copy_directory_and_contents_to_new_location(
               self.template.shared_files_directory,
@@ -226,6 +225,10 @@ class ProjectGenerator:
                               / 'cicd' / 'azure-pipelines.yml'
             os.makedirs(cicd_target, exist_ok=True)
             shutil.copy(cicd_source, cicd_target / file_name)
+        copy_directory_and_contents_to_new_location(
+            self.template.template_directory,
+            destination
+        )
         rename_files_in_directory(destination)
 
         logger.info(emoji.emojize('Project created successfully :thumbs_up:  '

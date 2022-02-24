@@ -51,6 +51,15 @@ class TestGenerateProjectFolder:
         pg = ProjectGenerator(builtin_templates[name])
         pg.generate_template_at_destination(destination_directory)
 
+    def test_requirements_overwrites_in_rest_api(self,
+                                                 builtin_templates,
+                                                 destination_directory):
+        pg = ProjectGenerator(builtin_templates['rest-api'])
+        pg.generate_template_at_destination(destination_directory)
+        with open(destination_directory / 'requirements.txt', 'r') as f:
+            contents = f.read()
+            assert 'flask' in contents
+
     def test_shared_template_fails(self, builtin_templates_path, destination_directory):
         with pytest.raises(ValueError):
             pt = ProjectTemplate(builtin_templates_path / 'shared', builtin_templates_path / 'shared')

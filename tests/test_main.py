@@ -76,9 +76,10 @@ class TestApplyTemplate:
                 s = f.read()
             assert proj_name in s
 
+    @pytest.mark.parametrize('proj_name', ['new-2', 'new', 'new_2'])
     def test_project_name_rename_removes_hyphens_in_setup_dot_py(self,
+                                                                 proj_name,
                                                                  tmp_path):
-        proj_name = 'new-2'
         s = '$project_name'
         test_files = [tmp_path / f'setup{suffix}'
                       for suffix in ['.py', '.txt', '.md']]

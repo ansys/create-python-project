@@ -1,3 +1,4 @@
+import os
 import pathlib
 from .common import create_one_template, ProjectGenerator, \
     copy_directory_and_contents_to_new_location, ProjectTemplate, \
@@ -43,7 +44,7 @@ class TestProjectTemplate:
         assert pt.template_directory is not None
         assert pt.shared_files_directory is not None
         assert pt.cicd_type is not None
-        
+
 
 class TestGenerateProjectFolder:
     @pytest.mark.parametrize('name', ['classic', 'gRPC-api', 'package', 'rest-api'])
@@ -56,9 +57,20 @@ class TestGenerateProjectFolder:
                                                  destination_directory):
         pg = ProjectGenerator(builtin_templates['rest-api'])
         pg.generate_template_at_destination(destination_directory)
+        dependencies = ['flask', 'flask-cors', 'flask-swagger-ui']
         with open(destination_directory / 'requirements.txt', 'r') as f:
             contents = f.read()
-            assert 'flask' in contents
+            assert all(item in contents for item in dependencies)
+
+    def test_requirements_overwrites_in_grpc_api(self,
+                                                 builtin_templates,
+                                                 destination_directory):
+        pg = ProjectGenerator(builtin_templates['gRPC-api'])
+        pg.generate_template_at_destination(destination_directory)
+        dependencies = ['grpcio', 'grpcio-tools']
+        with open(destination_directory / 'requirements.txt', 'r') as f:
+            contents = f.read()
+            assert all(item in contents for item in dependencies)
 
     def test_shared_template_fails(self, builtin_templates_path, destination_directory):
         with pytest.raises(ValueError):
@@ -71,6 +83,14 @@ class TestGenerateProjectFolder:
             pt = ProjectTemplate(builtin_templates_path / '_____', builtin_templates_path / 'shared')
             pg = ProjectGenerator(pt)
             pg.generate_template_at_destination(destination_directory)
+
+    def test_protobufs_exit_in_grpc_api(self,
+                                        builtin_templates,
+                                        destination_directory):
+        pg = ProjectGenerator(builtin_templates['gRPC-api'])
+        pg.generate_template_at_destination(destination_directory)
+
+        assert len(os.listdir(destination_directory / 'protobufs')) != 0
 
 
 class TestProjectTemplateAndDestinationChecker:

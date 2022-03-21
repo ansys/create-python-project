@@ -41,10 +41,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-
-    - name: pytester-cov
+    
+    - name: pytester-cov3-7
       id: pytester-cov
-      uses: alexanderdamiani/pytester-cov@v1.2.3
+      uses: dmitry-engineer/pytester-cov@v3.9.1-poetry
       with:
         pytest-root-dir: '.'
         cov-omit-list: 'tests/*, doc/*, src/templates/*'

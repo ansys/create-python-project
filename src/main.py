@@ -1,12 +1,13 @@
 # Copyright (c) 2022 Ansys, Inc. and its affiliates.
 # Unauthorised use, distribution or duplication is prohibited
 # LICENSE file is in the root directory of this source tree.
+import argparse
 import os
 import pathlib
 import sys
-import argparse
-from .generator import ProjectGenerator, ProjectTemplate
+
 from ._version import __version__
+from .generator import ProjectGenerator, ProjectTemplate
 
 
 def parse_args(parser: argparse.ArgumentParser) -> argparse.Namespace:

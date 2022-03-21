@@ -41,19 +41,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    
-    - name: pytester-cov3-7
-      id: pytester-cov
-      uses: dmitry-engineer/pytester-cov@v3.9.1-poetry
-      with:
-        pytest-root-dir: '.'
-        cov-omit-list: 'tests/*, doc/*, src/templates/*'
-        cov-threshold-total: ${{ env.COVERAGE_TOTAL }}
+        if [ -f requirements_test.txt ]; then pip install -r requirements_test.txt; fi
 
-    - name: Insufficient Test Coverage; project failed - exit
-      if: ${{ steps.pytester-cov.outputs.cov-threshold-total-fail == 'true' }}
+    - name: Run pytest coverage
       run: |
-        echo "coverage failure ${{ steps.pytester-cov.outputs.cov-threshold-total-fail }}"
-        echo "${{ steps.pytester-cov.outputs.output-table }}"
-        echo "Min total coverage: ${{ env.COVERAGE_TOTAL }}"
-        exit 1
+        coverage run -m pytest tests
+        coverage report --fail-under=${{ env.COVERAGE_TOTAL }}
+

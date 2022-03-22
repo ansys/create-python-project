@@ -17,6 +17,8 @@ python -m venv venv
 (venv) <Working-Directory>  python -m pip install -r requirements.txt
 ````
 
+For more details please refer to [this documentation]( https://docs.python.org/3/tutorial/venv.html).
+
 Now, to generate Python code from the protobufs, navigate to `src\server` directory and run the following command:
 
 ```shell
@@ -27,7 +29,7 @@ Here’s a breakdown:
 
 - **-I ../../protobufs** tells the compiler where to find files that your protobuf code imports. You don’t actually use the import feature, but the -I flag is required nonetheless.
 
-- **--python_out=../stubs --grpc_python_out=../stubs** tells the compiler where to output the Python files. In this template we generate all the compiled code under the a `stubs` to group tham and to use the same for the client and the server.
+- **--python_out=../stubs --grpc_python_out=../stubs** tells the compiler where to output the Python files. In this template we generate all the compiled code under the `stubs` subdirectory to group them and to use the same for the client and the server.
 
 - **../protobufs/\*.proto** is the path to the protobuf file, which will be used to generate the Python code. By using a regex (`*.proto`), we indicates that all protobuf files will be compiled.
 
@@ -38,7 +40,22 @@ The generated files include Python types and functions to interact with your API
 
 To explore the running API you can either use a code based client or client tools such us [BoomRPC](https://github.com/bloomrpc/bloomrpc)
 
+### Run the tests
+
+#### Using CLI
+
+````shell
+pytest
+````
+#### Using docker-compose
+
 ### Build
+
+````shell
+cd .\src\
+
+docker build . -f docker/Dockerfile -t <your-tag>
+````
 
 ### Deployment
 
@@ -46,10 +63,6 @@ Docker is perfect for deploying a Python microservice because you can package al
 the microservice in an isolated environment
 
 ##### Using docker CLI
-
-````shell
-docker build . -f docker/Dockerfile -t <your-tag>
-````
 
 ````shell
 docker run -p 127.0.0.1:50056:50051/tcp <your-tag>

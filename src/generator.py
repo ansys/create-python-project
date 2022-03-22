@@ -1,18 +1,19 @@
 # Copyright (c) 2022 Ansys, Inc. and its affiliates. Unauthorised use,
 # distribution or duplication is prohibited
 # LICENSE file is in the root directory of this source tree.
+import logging
 import os
 import pathlib
 import shutil
-import emoji
-import coloredlogs
-import logging
 import warnings
 from dataclasses import dataclass
 from string import Template
 from typing import List
-from .constants import DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
+import coloredlogs
+import emoji
+
+from .constants import DOT_FILES_TO_RENAME, GIT_RECC_LOG
 
 os.environ['COLOREDLOGS_LOG_FORMAT'] = \
     '%(asctime)s [%(levelname)s] %(message)s'

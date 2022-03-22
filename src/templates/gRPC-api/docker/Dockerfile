@@ -3,7 +3,6 @@ FROM python
 RUN mkdir /service
 COPY ../protobufs/ /service/protobufs/
 COPY ../src/ /service/
-COPY ../src/stubs/ /service/stubs/
 COPY requirements.txt /service/
 WORKDIR /service/
 RUN python -m pip install --upgrade pip

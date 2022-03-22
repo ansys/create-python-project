@@ -12,6 +12,7 @@ CLASSIFIERS = [
 ]
 
 setup(name='ansys-create-python-project',
+      python_requires='>3.7',
       version=version['__version__'],
       url='',
       author='ANSYS, Inc.',

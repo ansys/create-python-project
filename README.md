@@ -16,12 +16,12 @@
 Easily create a new Python project with simple commands:
 
 ```shell
-pipx run acpp -n my-project
+pipx run ansys-create-python-project -n my-project
 ```
 or
 
 ```shell
-python -m acpp -n my-project
+acpp -n my-project
 ```
 
 <h1 align="center">
@@ -49,7 +49,7 @@ This tool is compatible with Windows OS and Linux distributions.
 #### With pipx
 
 ```shell
-pipx run acpp -n my-project 
+pipx run ansys-create-python-project -n my-project 
 ```
 
 [pipx](https://pypa.github.io/pipx/) is a package runner tool that that helps to run applications written in Python.
@@ -99,16 +99,16 @@ If you do not want to install pipx you can still use the package, but first you 
 ```shell
 pip install ansys-create-python-project
 ```
-Then, you can run the package using Python's `python -m` functionality.
+Then, you can run the package on the command line.
 
 ```shell
-python -m acpp -n my-project
+acpp -n my-project
 ```
 
 If you aren't sure what sort of arguments you need to supply you can always view the help through the following command.
 
 ```shell
-python -m acpp --help
+acpp --help
 ```
 
 #### Specify other templates
@@ -117,13 +117,13 @@ The default project template is 'classic'. However, there are several other temp
 You can view the available templates by running the following command.
 
 ```shell
-pipx run acpp --template
+pipx run ansys-create-python-project --template
 ```
 
 You can easily specify other templates with the `-t` flag.
 
 ```sh
-pipx run acpp -n my-project -t rest-api
+pipx run ansys-create-python-project -n my-project -t rest-api
 ```
 
 ### Run tests locally

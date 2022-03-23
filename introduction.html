@@ -262,11 +262,11 @@
 </p><section id="quick-overview">
 <h1>Quick Overview<a class="headerlink" href="#quick-overview" title="Permalink to this headline">¶</a></h1>
 <p>Easily create a new Python project with simple commands:</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run acpp -n my-project
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project -n my-project
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m acpp -n my-project
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>acpp -n my-project
 </pre></div>
 </div>
 <h1 align="center">
@@ -290,7 +290,7 @@
 <h2>Create new project<a class="headerlink" href="#create-new-project" title="Permalink to this headline">¶</a></h2>
 <section id="with-pipx">
 <h3>With pipx<a class="headerlink" href="#with-pipx" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run acpp -n my-project
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project -n my-project
 </pre></div>
 </div>
 <p><a class="reference external" href="https://pypa.github.io/pipx/">pipx</a> is a package runner tool that that helps to run applications written in Python.
@@ -334,12 +334,12 @@ the transitive dependencies:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pip install ansys-create-python-project
 </pre></div>
 </div>
-<p>Then, you can run the package using Python’s <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">-m</span></code> functionality.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m acpp -n my-project
+<p>Then, you can run the package on the command line.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>acpp -n my-project
 </pre></div>
 </div>
 <p>If you aren’t sure what sort of arguments you need to supply you can always view the help through the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python -m acpp --help
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>acpp --help
 </pre></div>
 </div>
 </section>
@@ -347,11 +347,11 @@ the transitive dependencies:</p>
 <h3>Specify other templates<a class="headerlink" href="#specify-other-templates" title="Permalink to this headline">¶</a></h3>
 <p>The default project template is ‘classic’. However, there are several other templates available.
 You can view the available templates by running the following command.</p>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run acpp --template
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project --template
 </pre></div>
 </div>
 <p>You can easily specify other templates with the <code class="docutils literal notranslate"><span class="pre">-t</span></code> flag.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pipx run acpp -n my-project -t rest-api
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pipx run ansys-create-python-project -n my-project -t rest-api
 </pre></div>
 </div>
 </section>

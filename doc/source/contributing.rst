@@ -15,7 +15,7 @@ The following contribution information is specific to Create-Python-Project.
 
 Cloning the Create-Python-Project Repository
 --------------------------------------------
-Run this code to clone and install the latest version of PyMAPDL in development mode:
+Run this code to clone and install the latest version of Ansys-Create-Python-Project in development mode:
 
 .. code::
 

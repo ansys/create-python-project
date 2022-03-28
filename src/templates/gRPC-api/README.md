@@ -65,7 +65,7 @@ the microservice in an isolated environment
 ##### Using docker CLI
 
 ````shell
-docker run -p 127.0.0.1:50056:50051/tcp <your-tag>
+docker run -p 127.0.0.1:50051:50051/tcp <your-tag>
 ````
 ##### Using docker-compose
 

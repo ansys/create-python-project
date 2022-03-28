@@ -183,7 +183,7 @@ class ProjectTemplateAndDestinationChecker:
             raise FileExistsError(error)
 
     def warn_if_using_development_template(self):
-        development_templates = ['gRPC-api']
+        development_templates = []  # I keep this function and array. It could be used for next dev templates
 
         if self.template.template_directory.name in development_templates:
             warnings.warn(f'{self.template.template_directory.name} is '

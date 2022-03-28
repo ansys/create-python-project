@@ -1,0 +1,10 @@
+version: '3.9'
+
+services:
+  grpc-service:
+    container_name: grpc-app
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    ports:
+      - "50051:50051"

@@ -19,14 +19,16 @@ class Colors:
 
 
 GIT_RECC_LOG = f"""{Colors.OKCYAN}We recommend you track your project using git 
-and store it in a remote repository, such as on ADO or GitHub. 
+and store it in a remote repository, such as on ADO or GitHub. You will need
+a GitHub or ADO account to do this.
 This can be done by following these instructions provided you already have git 
 installed.
     1- Navigate to the created project directory on the command line 
     2- Make the directory into a git repo and link it to a remote origin
         2.1 [Optional] -  git init
-        2.2 [Optional] -  git remote add origin <git_repository_url>
-        2.3 [Optional] -  git add . && git commit -m \"initial commit\"
+        2.2 [Optional] -  git remote add origin <repository_url>
+        2.3 [Optional] -  git add . 
+        2.4 [Optional] -  git commit -m "initial commit"
         2.4 [Optional] -  git push origin main {Colors.OKCYAN} 
 
 """

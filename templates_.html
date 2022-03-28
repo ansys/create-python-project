@@ -310,21 +310,37 @@
 </section>
 <section id="grpc-api">
 <h1>gRPC-api<a class="headerlink" href="#grpc-api" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- src/
-|   ╰-- _version.py
-╰-- main.py
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- protobufs/
+|   ╰-- pingserver.proto
+╰-- requirements.txt
+╰-- src/
+|   ╰-- stubs/
+|   |   ╰-- __init__.py
+╰-- _version.py
+╰-- services/
+|   |   ╰-- pinger.py
+╰-- __init__.py
+╰-- server.py
+╰-- observability/
+|   |   ╰-- logging.py
+╰-- __init__.py
+╰-- client.py
 ╰-- __init__.py
 ╰-- tests/
-|   ╰-- test_main.py
-╰-- conftest.py
+|   ╰-- conftest.py
 ╰-- __init__.py
+╰-- test_server.py
+╰-- requirements_test.txt
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
 ╰-- examples/
 |   ╰-- README.md
 ╰-- docker/
-|   ╰-- README.md
+|   ╰-- Dockerfile
+╰-- README.md
+╰-- README.md
+╰-- docker-compose.yml
 </pre></div>
 </div>
 </section>
@@ -374,7 +390,7 @@
     
     <div class="footer-item">
       <p class="sphinx-version">
-Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.4.0.<br>
+Created using <a href="http://sphinx-doc.org/">Sphinx</a> 4.5.0.<br>
 </p>
     </div>
     

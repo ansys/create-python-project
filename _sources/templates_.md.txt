@@ -87,21 +87,37 @@
 ## gRPC-api
 
 ```
+╰-- protobufs/
+|   ╰-- pingserver.proto
+╰-- requirements.txt
 ╰-- src/
-|   ╰-- _version.py
-╰-- main.py
+|   ╰-- stubs/
+|   |   ╰-- __init__.py
+╰-- _version.py
+╰-- services/
+|   |   ╰-- pinger.py
+╰-- __init__.py
+╰-- server.py
+╰-- observability/
+|   |   ╰-- logging.py
+╰-- __init__.py
+╰-- client.py
 ╰-- __init__.py
 ╰-- tests/
-|   ╰-- test_main.py
-╰-- conftest.py
+|   ╰-- conftest.py
 ╰-- __init__.py
+╰-- test_server.py
+╰-- requirements_test.txt
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
 ╰-- examples/
 |   ╰-- README.md
 ╰-- docker/
-|   ╰-- README.md
+|   ╰-- Dockerfile
+╰-- README.md
+╰-- README.md
+╰-- docker-compose.yml
 ```
 
 

@@ -11,6 +11,16 @@
   <a href="#license"><img src="https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg?colorB=ff0000"></a>
 </p>
 
+## Deprecation Warning
+
+> **Warning**
+**This repository has been deprecated in favor of [ansys-templates].** The
+new template takes advantage of a dynamic install, allows you to select the
+build system and is deeply tested.
+
+[ansys-templates]: https://github.com/ansys/ansys-templates
+
+
 ## Quick Overview
 
 Easily create a new Python project with simple commands:

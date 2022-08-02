@@ -1,146 +1,146 @@
-## rest-api
+## classic
 
 ```
-╰-- requirements.txt
-╰-- src/
-|   ╰-- app.py
-╰-- models/
-|   |   ╰-- __init__.py
-╰-- _version.py
-╰-- static/
-|   |   ╰-- swagger.json
-╰-- __init__.py
-╰-- blueprints/
-|   |   ╰-- health.py
-╰-- __init__.py
-╰-- version.py
-╰-- tests/
-|   ╰-- Dockerfile
-╰-- docker-compose.yaml
-╰-- conftest.py
-╰-- __init__.py
-╰-- test_server.py
-╰-- doc/
-|   ╰-- images/
-|   |   ╰-- ansys.gif
-╰-- examples/
-|   ╰-- README.md
 ╰-- docker/
 |   ╰-- Dockerfile
 ╰-- README.md
-╰-- docker-compose.yml
-```
-
-
-## shared
-
-```
-╰-- LICENSE
-╰-- gitattributes
-╰-- requirements.txt
-╰-- gitignore
-╰-- flake8
-╰-- requirements_doc.txt
-╰-- setup.py
-╰-- requirements_test.txt
-╰-- CODE_OF_CONDUCT.md
-╰-- pytest.ini
-╰-- cicd/
-|   ╰-- python-package.yml
-╰-- azure-pipelines.yml
-╰-- CONTRIBUTING.md
-╰-- sphinxdoc/
-|   ╰-- source/
-|   |   ╰-- conf.py
-╰-- index.rst
-╰-- package.rst
-╰-- license.rst
-╰-- code_of_conduct.rst
-╰-- make.bat
-╰-- Makefile
-╰-- README.md
-╰-- CHANGELOG.md
+╰-- tests/
+|   ╰-- Dockerfile
+╰-- conftest.py
+╰-- __init__.py
+╰-- docker-compose.yaml
+╰-- test_main.py
+╰-- examples/
+|   ╰-- README.md
+╰-- src/
+|   ╰-- main.py
+╰-- __init__.py
+╰-- _version.py
+╰-- doc/
+|   ╰-- images/
+|   |   ╰-- placeholder-image.png
 ```
 
 
 ## package
 
 ```
-╰-- src/
-|   ╰-- _version.py
-╰-- main.py
-╰-- __init__.py
+╰-- docker/
+|   ╰-- README.md
 ╰-- tests/
-|   ╰-- test_main.py
-╰-- conftest.py
+|   ╰-- conftest.py
 ╰-- __init__.py
+╰-- test_main.py
+╰-- examples/
+|   ╰-- README.md
+╰-- src/
+|   ╰-- main.py
+╰-- __init__.py
+╰-- _version.py
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
-╰-- examples/
-|   ╰-- README.md
-╰-- docker/
-|   ╰-- README.md
+```
+
+
+## shared
+
+```
+╰-- gitattributes
+╰-- sphinxdoc/
+|   ╰-- Makefile
+╰-- source/
+|   |   ╰-- index.rst
+╰-- code_of_conduct.rst
+╰-- package.rst
+╰-- conf.py
+╰-- license.rst
+╰-- make.bat
+╰-- CHANGELOG.md
+╰-- CODE_OF_CONDUCT.md
+╰-- CONTRIBUTING.md
+╰-- pytest.ini
+╰-- requirements_doc.txt
+╰-- flake8
+╰-- LICENSE
+╰-- cicd/
+|   ╰-- python-package.yml
+╰-- azure-pipelines.yml
+╰-- requirements.txt
+╰-- gitignore
+╰-- setup.py
+╰-- requirements_test.txt
+╰-- README.md
 ```
 
 
 ## gRPC-api
 
 ```
+╰-- docker/
+|   ╰-- Dockerfile
+╰-- README.md
+╰-- requirements.txt
+╰-- tests/
+|   ╰-- conftest.py
+╰-- __init__.py
+╰-- test_server.py
+╰-- examples/
+|   ╰-- README.md
+╰-- docker-compose.yml
 ╰-- protobufs/
 |   ╰-- pingserver.proto
-╰-- requirements.txt
+╰-- requirements_test.txt
 ╰-- src/
 |   ╰-- stubs/
 |   |   ╰-- __init__.py
+╰-- client.py
+╰-- __init__.py
+╰-- observability/
+|   |   ╰-- logging.py
+╰-- __init__.py
 ╰-- _version.py
 ╰-- services/
 |   |   ╰-- pinger.py
 ╰-- __init__.py
 ╰-- server.py
-╰-- observability/
-|   |   ╰-- logging.py
-╰-- __init__.py
-╰-- client.py
-╰-- __init__.py
-╰-- tests/
-|   ╰-- conftest.py
-╰-- __init__.py
-╰-- test_server.py
-╰-- requirements_test.txt
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
-╰-- examples/
-|   ╰-- README.md
+╰-- README.md
+```
+
+
+## rest-api
+
+```
 ╰-- docker/
 |   ╰-- Dockerfile
-╰-- README.md
-╰-- README.md
 ╰-- docker-compose.yml
-```
-
-
-## classic
-
-```
-╰-- src/
-|   ╰-- _version.py
-╰-- main.py
-╰-- __init__.py
+╰-- README.md
+╰-- requirements.txt
 ╰-- tests/
 |   ╰-- Dockerfile
-╰-- test_main.py
-╰-- docker-compose.yaml
 ╰-- conftest.py
 ╰-- __init__.py
-╰-- doc/
-|   ╰-- images/
-|   |   ╰-- placeholder-image.png
+╰-- docker-compose.yaml
+╰-- test_server.py
 ╰-- examples/
 |   ╰-- README.md
-╰-- docker/
-|   ╰-- Dockerfile
-╰-- README.md
+╰-- src/
+|   ╰-- app.py
+╰-- models/
+|   |   ╰-- __init__.py
+╰-- blueprints/
+|   |   ╰-- health.py
+╰-- version.py
+╰-- __init__.py
+╰-- __init__.py
+╰-- _version.py
+╰-- static/
+|   |   ╰-- swagger.json
+╰-- doc/
+|   ╰-- images/
+|   |   ╰-- ansys.gif
 ```
 

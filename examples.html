@@ -9,8 +9,9 @@
     <title>Examples &#8212; ansys-create-python-project 0.0.6dev documentation</title>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,15 +21,14 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/pyansys_sphinx_theme.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
+    
+        <link href="_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -45,7 +45,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -85,7 +85,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="introduction.html">
-  Quick Overview
+  Deprecation Warning
  </a>
 </li>
 
@@ -131,24 +131,56 @@
       
     </div>
 
+    
     <div id="navbar-end">
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
       
     </div>
+    
   </div>
 </div>
     </nav>
     
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="package.html" title="Module Documentation"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="templates.html" title="Templates"
+             accesskey="P">previous</a> |</li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="index.html">ansys-create-python-project 0.0.6dev documentation</a> » </li>
+    
+
+        <li class="nav-item nav-item-this"><a href="">Examples</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
     
 
 
@@ -157,7 +189,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -165,6 +198,9 @@
     
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -175,7 +211,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -233,7 +269,7 @@
               <div>
                 
   <section id="examples">
-<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h1>
 <p>Python projects can be created using this tool in two ways:
 via pip and with pipx.</p>
 <p>If you use pipx you don’t have to install the package itself,
@@ -243,7 +279,7 @@ from there. Examples of both will be used in the examples but
 whilst the syntax may differ slightly between pip and pipx the
 functionality is the same.</p>
 <section id="classic-template-default">
-<h2>Classic template (default)<a class="headerlink" href="#classic-template-default" title="Permalink to this headline">¶</a></h2>
+<h2>Classic template (default)<a class="headerlink" href="#classic-template-default" title="Permalink to this headline">#</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">classic</span></code> template is the default in the tool, and will be used if no template is specified.</p>
 <p>The minimum you need to provide is the name of your project using either the <code class="docutils literal notranslate"><span class="pre">--Name</span></code> or <code class="docutils literal notranslate"><span class="pre">-n</span></code> flags.</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">acpp</span> <span class="n">-n</span> <span class="n">my_project</span>
@@ -291,7 +327,7 @@ functionality is the same.</p>
 </div>
 </section>
 <section id="view-available-templates">
-<h2>View available templates<a class="headerlink" href="#view-available-templates" title="Permalink to this headline">¶</a></h2>
+<h2>View available templates<a class="headerlink" href="#view-available-templates" title="Permalink to this headline">#</a></h2>
 <p>Create-Python-Package comes with several builtin templates, which can be viewed in detail on
 the <a class="reference internal" href="templates.html#templates"><span class="std std-ref">Templates</span></a>. page. If you want to view those available to you you can also use the
 <code class="docutils literal notranslate"><span class="pre">--templates</span></code> flag to interrogate the CLI.</p>
@@ -305,7 +341,7 @@ the <a class="reference internal" href="templates.html#templates"><span class="s
 </div>
 </section>
 <section id="version-number">
-<h2>Version number<a class="headerlink" href="#version-number" title="Permalink to this headline">¶</a></h2>
+<h2>Version number<a class="headerlink" href="#version-number" title="Permalink to this headline">#</a></h2>
 <p>Similarly you can interrogate the version number of the version you’re using via the <code class="docutils literal notranslate"><span class="pre">--version</span></code> flag.</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">python</span> <span class="n">-m</span> <span class="n">acpp</span> <span class="p">-</span><span class="n">-version</span>
 <span class="n">ansys-create-python-project</span> <span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">2dev</span>
@@ -313,7 +349,7 @@ the <a class="reference internal" href="templates.html#templates"><span class="s
 </div>
 </section>
 <section id="creating-a-project-whilst-specifying-a-template">
-<h2>Creating a project whilst specifying a template<a class="headerlink" href="#creating-a-project-whilst-specifying-a-template" title="Permalink to this headline">¶</a></h2>
+<h2>Creating a project whilst specifying a template<a class="headerlink" href="#creating-a-project-whilst-specifying-a-template" title="Permalink to this headline">#</a></h2>
 <p>In order to specify a template you must use the <code class="docutils literal notranslate"><span class="pre">--Template</span></code> (or <code class="docutils literal notranslate"><span class="pre">-t</span></code>) flag.
 For example, to create a new package called “my_package”, you would need to execute the following command.</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">PS </span><span class="n">C</span><span class="p">:\&gt;</span> <span class="n">acpp</span> <span class="n">-n</span> <span class="n">my_package</span> <span class="n">-t</span> <span class="n">package</span>
@@ -334,7 +370,7 @@ For example, to create a new package called “my_package”, you would need to 
 </div>
 </section>
 <section id="ci-cd-options">
-<h2>CI/CD Options<a class="headerlink" href="#ci-cd-options" title="Permalink to this headline">¶</a></h2>
+<h2>CI/CD Options<a class="headerlink" href="#ci-cd-options" title="Permalink to this headline">#</a></h2>
 <p>By default, Create-Python-Project copies GitHub workflows to to your created project.
 However, it is trivial to instruct it to copy azure devops workflows instead, by including
 the flag and option: <code class="docutils literal notranslate"><span class="pre">--cicd</span> <span class="pre">ado</span></code>. We only offer workflows for GitHub and ADO at the moment
@@ -357,7 +393,7 @@ but may add more in the future.</p>
 </div>
 </section>
 <section id="viewing-the-help">
-<h2>Viewing the help<a class="headerlink" href="#viewing-the-help" title="Permalink to this headline">¶</a></h2>
+<h2>Viewing the help<a class="headerlink" href="#viewing-the-help" title="Permalink to this headline">#</a></h2>
 <p>If you’re still having trouble understanding the command line, you can always view the help using the
 <code class="docutils literal notranslate"><span class="pre">--help</span></code> or <code class="docutils literal notranslate"><span class="pre">-h</span></code> flags.</p>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span>PS C:\&gt; acpp --help
@@ -381,13 +417,32 @@ PS C:\&gt;
               </div>
               
               
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="templates.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Templates</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="package.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Module Documentation</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
           </main>
           
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

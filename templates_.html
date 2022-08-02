@@ -6,11 +6,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>rest-api &#8212; ansys-create-python-project 0.0.6dev documentation</title>
+    <title>classic &#8212; ansys-create-python-project 0.0.6dev documentation</title>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,15 +21,14 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/pyansys_sphinx_theme.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
+    
+        <link href="_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -43,7 +43,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -83,7 +83,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="introduction.html">
-  Quick Overview
+  Deprecation Warning
  </a>
 </li>
 
@@ -129,24 +129,50 @@
       
     </div>
 
+    
     <div id="navbar-end">
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
       
     </div>
+    
   </div>
 </div>
     </nav>
     
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+    
+    
+        <li class="nav-item nav-item-0"><a href="index.html">ansys-create-python-project 0.0.6dev documentation</a> » </li>
+    
+
+        <li class="nav-item nav-item-this"><a href="">classic</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
     
 
 
@@ -155,7 +181,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -163,6 +190,9 @@
     
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -173,7 +203,7 @@
               
               <div class="toc-item">
                 
-<div class="tocsection onthispage pt-5 pb-3">
+<div class="tocsection onthispage mt-5 pt-1 pb-3">
     <i class="fas fa-list"></i> On this page
 </div>
 
@@ -181,12 +211,7 @@
     <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   rest-api
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#shared">
-   shared
+   classic
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -195,13 +220,18 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shared">
+   shared
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#grpc-api">
    gRPC-api
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#classic">
-   classic
+  <a class="reference internal nav-link" href="#rest-api">
+   rest-api
   </a>
  </li>
 </ul>
@@ -225,145 +255,145 @@
               
               <div>
                 
-  <section id="rest-api">
-<h1>rest-api<a class="headerlink" href="#rest-api" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- requirements.txt
-╰-- src/
-|   ╰-- app.py
-╰-- models/
-|   |   ╰-- __init__.py
-╰-- _version.py
-╰-- static/
-|   |   ╰-- swagger.json
-╰-- __init__.py
-╰-- blueprints/
-|   |   ╰-- health.py
-╰-- __init__.py
-╰-- version.py
+  <section id="classic">
+<h1>classic<a class="headerlink" href="#classic" title="Permalink to this headline">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- docker/
+|   ╰-- Dockerfile
+╰-- README.md
 ╰-- tests/
 |   ╰-- Dockerfile
-╰-- docker-compose.yaml
 ╰-- conftest.py
 ╰-- __init__.py
-╰-- test_server.py
-╰-- doc/
-|   ╰-- images/
-|   |   ╰-- ansys.gif
+╰-- docker-compose.yaml
+╰-- test_main.py
 ╰-- examples/
 |   ╰-- README.md
-╰-- docker/
-|   ╰-- Dockerfile
-╰-- README.md
-╰-- docker-compose.yml
-</pre></div>
-</div>
-</section>
-<section id="shared">
-<h1>shared<a class="headerlink" href="#shared" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- LICENSE
-╰-- gitattributes
-╰-- requirements.txt
-╰-- gitignore
-╰-- flake8
-╰-- requirements_doc.txt
-╰-- setup.py
-╰-- requirements_test.txt
-╰-- CODE_OF_CONDUCT.md
-╰-- pytest.ini
-╰-- cicd/
-|   ╰-- python-package.yml
-╰-- azure-pipelines.yml
-╰-- CONTRIBUTING.md
-╰-- sphinxdoc/
-|   ╰-- source/
-|   |   ╰-- conf.py
-╰-- index.rst
-╰-- package.rst
-╰-- license.rst
-╰-- code_of_conduct.rst
-╰-- make.bat
-╰-- Makefile
-╰-- README.md
-╰-- CHANGELOG.md
+╰-- src/
+|   ╰-- main.py
+╰-- __init__.py
+╰-- _version.py
+╰-- doc/
+|   ╰-- images/
+|   |   ╰-- placeholder-image.png
 </pre></div>
 </div>
 </section>
 <section id="package">
-<h1>package<a class="headerlink" href="#package" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- src/
-|   ╰-- _version.py
-╰-- main.py
-╰-- __init__.py
+<h1>package<a class="headerlink" href="#package" title="Permalink to this headline">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- docker/
+|   ╰-- README.md
 ╰-- tests/
-|   ╰-- test_main.py
-╰-- conftest.py
+|   ╰-- conftest.py
 ╰-- __init__.py
+╰-- test_main.py
+╰-- examples/
+|   ╰-- README.md
+╰-- src/
+|   ╰-- main.py
+╰-- __init__.py
+╰-- _version.py
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
-╰-- examples/
-|   ╰-- README.md
-╰-- docker/
-|   ╰-- README.md
+</pre></div>
+</div>
+</section>
+<section id="shared">
+<h1>shared<a class="headerlink" href="#shared" title="Permalink to this headline">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- gitattributes
+╰-- sphinxdoc/
+|   ╰-- Makefile
+╰-- source/
+|   |   ╰-- index.rst
+╰-- code_of_conduct.rst
+╰-- package.rst
+╰-- conf.py
+╰-- license.rst
+╰-- make.bat
+╰-- CHANGELOG.md
+╰-- CODE_OF_CONDUCT.md
+╰-- CONTRIBUTING.md
+╰-- pytest.ini
+╰-- requirements_doc.txt
+╰-- flake8
+╰-- LICENSE
+╰-- cicd/
+|   ╰-- python-package.yml
+╰-- azure-pipelines.yml
+╰-- requirements.txt
+╰-- gitignore
+╰-- setup.py
+╰-- requirements_test.txt
+╰-- README.md
 </pre></div>
 </div>
 </section>
 <section id="grpc-api">
-<h1>gRPC-api<a class="headerlink" href="#grpc-api" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- protobufs/
-|   ╰-- pingserver.proto
+<h1>gRPC-api<a class="headerlink" href="#grpc-api" title="Permalink to this headline">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- docker/
+|   ╰-- Dockerfile
+╰-- README.md
 ╰-- requirements.txt
+╰-- tests/
+|   ╰-- conftest.py
+╰-- __init__.py
+╰-- test_server.py
+╰-- examples/
+|   ╰-- README.md
+╰-- docker-compose.yml
+╰-- protobufs/
+|   ╰-- pingserver.proto
+╰-- requirements_test.txt
 ╰-- src/
 |   ╰-- stubs/
 |   |   ╰-- __init__.py
+╰-- client.py
+╰-- __init__.py
+╰-- observability/
+|   |   ╰-- logging.py
+╰-- __init__.py
 ╰-- _version.py
 ╰-- services/
 |   |   ╰-- pinger.py
 ╰-- __init__.py
 ╰-- server.py
-╰-- observability/
-|   |   ╰-- logging.py
-╰-- __init__.py
-╰-- client.py
-╰-- __init__.py
-╰-- tests/
-|   ╰-- conftest.py
-╰-- __init__.py
-╰-- test_server.py
-╰-- requirements_test.txt
 ╰-- doc/
 |   ╰-- images/
 |   |   ╰-- ansys.gif
-╰-- examples/
-|   ╰-- README.md
-╰-- docker/
-|   ╰-- Dockerfile
 ╰-- README.md
-╰-- README.md
-╰-- docker-compose.yml
 </pre></div>
 </div>
 </section>
-<section id="classic">
-<h1>classic<a class="headerlink" href="#classic" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- src/
-|   ╰-- _version.py
-╰-- main.py
-╰-- __init__.py
+<section id="rest-api">
+<h1>rest-api<a class="headerlink" href="#rest-api" title="Permalink to this headline">#</a></h1>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>╰-- docker/
+|   ╰-- Dockerfile
+╰-- docker-compose.yml
+╰-- README.md
+╰-- requirements.txt
 ╰-- tests/
 |   ╰-- Dockerfile
-╰-- test_main.py
-╰-- docker-compose.yaml
 ╰-- conftest.py
 ╰-- __init__.py
-╰-- doc/
-|   ╰-- images/
-|   |   ╰-- placeholder-image.png
+╰-- docker-compose.yaml
+╰-- test_server.py
 ╰-- examples/
 |   ╰-- README.md
-╰-- docker/
-|   ╰-- Dockerfile
-╰-- README.md
+╰-- src/
+|   ╰-- app.py
+╰-- models/
+|   |   ╰-- __init__.py
+╰-- blueprints/
+|   |   ╰-- health.py
+╰-- version.py
+╰-- __init__.py
+╰-- __init__.py
+╰-- _version.py
+╰-- static/
+|   |   ╰-- swagger.json
+╰-- doc/
+|   ╰-- images/
+|   |   ╰-- ansys.gif
 </pre></div>
 </div>
 </section>
@@ -372,13 +402,18 @@
               </div>
               
               
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+              
           </main>
           
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     

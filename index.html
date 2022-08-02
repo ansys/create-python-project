@@ -9,8 +9,9 @@
     <title>Welcome to Create-Python-Project’s documentation! &#8212; ansys-create-python-project 0.0.6dev documentation</title>
     
     
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -20,15 +21,14 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/css/blank.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/pyansys_sphinx_theme.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
+    
+        <link href="_static/css/breadcrumbs.css" rel="stylesheet">
     
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -36,7 +36,7 @@
     <script src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Quick Overview" href="introduction.html" />
+    <link rel="next" title="Deprecation Warning" href="introduction.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -44,7 +44,7 @@
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
     
     <div class="container-fluid" id="banner"></div>
 
@@ -84,7 +84,7 @@
         <ul id="navbar-main-elements" class="navbar-nav">
     <li class="toctree-l1 nav-item">
  <a class="reference internal nav-link" href="introduction.html">
-  Quick Overview
+  Deprecation Warning
  </a>
 </li>
 
@@ -130,24 +130,51 @@
       
     </div>
 
+    
     <div id="navbar-end">
       
       <div class="navbar-end-item">
         <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
         <li class="nav-item">
-          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub">
-            <span><i class="fab fa-github-square"></i></span>
-            <label class="sr-only">GitHub</label>
-          </a>
+          <a class="nav-link" href="https://github.com/pyansys" rel="noopener" target="_blank" title="GitHub"><span><i class="fab fa-github-square"></i></span>
+            <label class="sr-only">GitHub</label></a>
         </li>
       </ul>
       </div>
       
     </div>
+    
   </div>
 </div>
     </nav>
     
+    
+        <div class="container-xl">
+    <div class="row">
+        <div class="col-12 col-md-3" id="breadcrumbs-spacer"></div>
+        <div class="col-12 col-md-11 col-xl-9" id="breadcrumbs">
+          
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Deprecation Warning"
+             accesskey="N">next</a> |</li>
+    
+    
+
+        <li class="nav-item nav-item-this"><a href="">Welcome to Create-Python-Project’s documentation!</a></li> 
+      </ul>
+    </div>
+        </div>
+  </div>
+</div>
     
 
 
@@ -156,7 +183,8 @@
           
             
             <!-- Only show if we have sidebars configured, else just a small margin  -->
-            <div class="col-12 col-md-3 bd-sidebar"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+            <div class="col-12 col-md-3 bd-sidebar">
+              <div class="sidebar-start-items"><form class="bd-search d-flex align-items-center" action="search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
@@ -164,6 +192,9 @@
     
   </div>
 </nav>
+              </div>
+              <div class="sidebar-end-items">
+              </div>
             </div>
             
           
@@ -197,14 +228,15 @@
               <div>
                 
   <section id="welcome-to-create-python-project-s-documentation">
-<h1>Welcome to Create-Python-Project’s documentation!<a class="headerlink" href="#welcome-to-create-python-project-s-documentation" title="Permalink to this headline">¶</a></h1>
+<h1>Welcome to Create-Python-Project’s documentation!<a class="headerlink" href="#welcome-to-create-python-project-s-documentation" title="Permalink to this headline">#</a></h1>
 <img alt="https://img.shields.io/pypi/v/ansys-create-python-project.svg" src="https://img.shields.io/pypi/v/ansys-create-python-project.svg" /><img alt="https://img.shields.io/pypi/status/ansys-create-python-project.svg" src="https://img.shields.io/pypi/status/ansys-create-python-project.svg" /><img alt="https://img.shields.io/pypi/pyversions/ansys-create-python-project.svg" src="https://img.shields.io/pypi/pyversions/ansys-create-python-project.svg" /><img alt="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" /><img alt="https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg" src="https://img.shields.io/github/license/sourcerer-io/hall-of-fame.svg" /><p>Create-Python-Project is an open-source Python-based command line tool that
 generates pre-defined project structures in new directories. It is a tool
 designed to be used by beginners and experienced developers alike.</p>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Quick Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Deprecation Warning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html#quick-overview">Quick Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction.html#usage">Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction.html#create-new-project">Create new project</a></li>
@@ -214,11 +246,11 @@ designed to be used by beginners and experienced developers alike.</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="templates.html#in-general">In General</a></li>
-<li class="toctree-l2"><a class="reference internal" href="templates.html#rest-api">rest-api</a></li>
-<li class="toctree-l2"><a class="reference internal" href="templates.html#shared">shared</a></li>
-<li class="toctree-l2"><a class="reference internal" href="templates.html#package">package</a></li>
-<li class="toctree-l2"><a class="reference internal" href="templates.html#grpc-api">gRPC-api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="templates.html#classic">classic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#package">package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#shared">shared</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#grpc-api">gRPC-api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="templates.html#rest-api">rest-api</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
@@ -257,13 +289,25 @@ designed to be used by beginners and experienced developers alike.</p>
               </div>
               
               
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='right-next' id="next-link" href="introduction.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deprecation Warning</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+              
           </main>
           
 
       </div>
     </div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 <footer class="footer mt-5 mt-md-0">
   <div class="container">
     
